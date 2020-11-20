@@ -14,6 +14,10 @@ export const LandingContainer = styled.div`
 
   padding: 20px;
   padding-bottom: 50px;
+
+  @media screen and (max-width: 800px){
+    margin: 8px;
+  }
 `
 
 export const Title = styled.h1`
@@ -25,6 +29,10 @@ export const LandingHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: 800px){
+    margin: unset;
+  }
 `
 export const Info = styled.div`
   width: 100px;
@@ -41,6 +49,11 @@ export const Info = styled.div`
     width: 70%;
     height: 70%;
     color: #5c5c5c;
+  }
+
+  @media screen and (max-width: 800px){
+    width: 54px;
+    height: 54px;
   }
 `
 export const Content = styled.div`

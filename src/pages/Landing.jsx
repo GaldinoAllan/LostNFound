@@ -27,10 +27,7 @@ const Landing = () => {
         </Info>
       </LandingHeader>
       {modalIsOpen && (
-        <InfoModal isOpen={modalIsOpen} setIsOpen={handleOpenModal}>
-          <h1>titulo</h1>
-          <p>adsf;oijapdsofipaodisf</p>
-        </InfoModal>
+        <InfoModal isOpen={modalIsOpen} setIsOpen={handleOpenModal} />
       )}
       <Content />
     </LandingContainer>
