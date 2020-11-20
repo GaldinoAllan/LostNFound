@@ -35,6 +35,8 @@ export const Info = styled.div`
   align-items: center;
   justify-content: center;
 
+  cursor: pointer;
+
   svg{
     width: 70%;
     height: 70%;
