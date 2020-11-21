@@ -35,8 +35,8 @@ export const LandingHeader = styled.div`
   }
 `
 export const Info = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   box-shadow: 2px 4px 13px rgba(0, 0, 0, 0.39);
   border-radius: 20px;
   display: flex;
@@ -57,5 +57,15 @@ export const Info = styled.div`
   }
 `
 export const Content = styled.div`
-  
+  display: flex;
+  margin: 16px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 800px){
+    margin: unset;
+    flex-wrap: unset;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 `
