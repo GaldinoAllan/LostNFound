@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 220px;
-  height: 260px;
-  margin: 40px;
+  margin: 36px 24px;
   background: #FFFFFF;
   box-shadow: 2px 4px 13px rgba(0, 0, 0, 0.39);
 
@@ -11,15 +9,14 @@ export const Container = styled.div`
   grid-template-columns: 1fr;
 
   @media screen and (max-width: 800px){
-    width: 150px;
-    height: 240px;
+    margin: 36px 16px;
   }
 `
 
 export const Image = styled.div`
   width: 190px;
   height: 150px;
-  margin: 8px;
+  margin: 10px;
   align-self: center;
   justify-self: center;
 
@@ -37,7 +34,7 @@ export const Image = styled.div`
 export const DescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 16px;
+  margin: 12px 16px;
   flex: 1;
 `
 

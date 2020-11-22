@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <Title>Achados e Perdidos IFSP</Title>
+      <Title to="/">Achados e Perdidos IFSP</Title>
       <SearchInput handleChange={handleSearch} placeholder="Digite sua busca" />
     </HeaderContainer>
   )

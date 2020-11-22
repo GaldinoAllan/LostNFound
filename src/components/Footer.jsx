@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import {
   FooterContainer,
   FooterContent,
@@ -15,7 +16,7 @@ const Footer = () => (
         <p>CEP 13320-271</p>
       </Column>
       <Column>
-        <h3>Dúvidas frequentes</h3>
+        <h3><Link to="/faq">Dúvidas frequentes</Link></h3>
         <p>Como descrever meu objeto?</p>
         <p>Como ter meu objeto restituído?</p>
       </Column>
