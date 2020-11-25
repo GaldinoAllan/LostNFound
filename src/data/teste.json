@@ -1,0 +1,144 @@
+{
+    "Administrador": [
+        {
+            "nome": "Allan",
+            "email": "a@gmail.com",
+            "senha": "123456",
+            "prontuario": "1",
+            "idCargo": "3"
+        },
+        {
+            "nome": "Gabi",
+            "email": "gabi@gmail.com",
+            "senha": "123456",
+            "prontuario": "12",
+            "idCargo": "2"
+        },
+        {
+            "nome": "Gabriel",
+            "email": "ga@gmail.com",
+            "senha": "123456",
+            "prontuario": "123",
+            "idCargo": "1"
+        },
+        {
+            "nome": "Jean",
+            "email": "j@gmail.com",
+            "senha": "123456",
+            "prontuario": "1234",
+            "idCargo": "1"
+        }
+    ],
+    "cargo": [
+        {
+            "idCargo": "1",
+            "cargo": "Professor"
+        },
+        {
+            "idCargo": "2",
+            "cargo": "Coordenador"
+        },
+        {
+            "idCargo": "3",
+            "cargo": "Diretor"
+        }
+    ],
+    "Local": [
+        {
+            "idLocal": "1",
+            "local": "Sala 315"
+        },
+        {
+            "idLocal": "2",
+            "local": "Sala 215"
+        },
+        {
+            "idLocal": "3 ",
+            "local": "Sala 317"
+        }
+    ],
+    "item": [
+        {
+            "id": "1",
+            "item": "Estojo",
+            "data": "18/09/2020",
+            "descricao": "Estojo rosa com chaveiro de urso",
+            "idCategoria": "1",
+            "idLocal": "1"
+        },
+        {
+            "id": "2",
+            "item": "Cardeno",
+            "data": "27/09/2020",
+            "descricao": "Cardeno tilibra preto",
+            "idCategoria": "1",
+            "idLocal": "1"
+        },
+        {
+            "id": "3",
+            "item": "Pendrive",
+            "data": "05/10/2020",
+            "descricao": "Pendrive do miranha 16gb",
+            "idCategoria": "3",
+            "idLocal": "1"
+        },
+        {
+            "id": "4",
+            "item": "Caneta",
+            "data": "07/10/2020",
+            "descricao": "caneta bic",
+            "idCategoria": "1",
+            "idLocal": "1"
+        },
+        {
+            "id": "5",
+            "item": "Blusa",
+            "data": "18/10/2020",
+            "descricao": "blusa ifsp cor verde",
+            "idCategoria": "1",
+            "idLocal": "1"
+        },
+        {
+            "id": "6",
+            "item": "Mochila",
+            "data": "10/11/2020",
+            "descricao": "Mochila lilás da polly",
+            "idCategoria": "1",
+            "idLocal": "1"
+        },
+        {
+            "id": "6",
+            "item": "Prótese da perna",
+            "data": "10/11/2020",
+            "descricao": "Prótese Sergel tatuada com tatoo de chiclete big big",
+            "idCategoria": "0",
+            "idLocal": "1"
+        },
+        {
+            "id": "7",
+            "item": "Documento RG",
+            "data": "13/11/2020",
+            "descricao": "Documento do aluno Allan",
+            "idCategoria": "3",
+            "idLocal": "1"
+        }
+    ],
+    "categoria": [
+        {
+            "idCategoria": "0",
+            "categoria": "outros"
+        },
+        {
+            "idCategoria": "1",
+            "categoria": "material escolar"
+        },
+        {
+            "idCategoria": "2",
+            "categoria": "eletronicos"
+        },
+        {
+            "idCategoria": "3",
+            "categoria": "documento"
+        }
+    ]
+}
