@@ -1,17 +1,24 @@
-import { Input } from 'antd'
+import { FaSearch } from 'react-icons/fa';
 
-import 'antd/dist/antd.css'
+import {
+  SearchBox,
+  SearchText,
+  SearchBtn,
+} from '../styles/components/SearchInput'
 
-const SearchInput = ({ handleChange, placeholder }) => {
-  const { Search } = Input;
-
+const SearchInput = ({ handleSearch, placeholder }) => {
   return (
-    <Search
-      placeholder={placeholder}
-      onSearch={handleChange}
-      enterButton
-      allowClear
-    />
+    <SearchBox>
+      <SearchText
+        type='search'
+        name="search"
+        placeholder={placeholder}
+        onChange={handleSearch}
+      />
+      <SearchBtn>
+        <FaSearch />
+      </SearchBtn>
+    </SearchBox>
   )
 }
 

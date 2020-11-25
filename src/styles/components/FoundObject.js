@@ -45,11 +45,7 @@ export const DescriptionLine = styled.div`
 `
 
 export const DescriptionItem = styled.div`
-  line-height: 4px;
 
-  @media screen and (max-width: 800px){
-    line-height: 12px;
-  }
 `
 
 export const DescriptionTitle = styled.p`

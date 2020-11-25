@@ -1,4 +1,4 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 
 import SearchInput from './SearchInput'
 
@@ -8,14 +8,17 @@ import {
 } from '../styles/components/Header'
 
 const Header = () => {
-  const [search, setSearch] = useState('')
+  // const [search, setSearch] = useState('')
 
-  const handleSearch = value => { setSearch(value) };
+  const handleSearch = e => {
+    console.log(`${e.target.value}`);
+    // setSearch(value)
+  };
 
   return (
     <HeaderContainer>
       <Title to="/">Achados e Perdidos IFSP</Title>
-      <SearchInput handleChange={handleSearch} placeholder="Digite sua busca" />
+      <SearchInput handleSearch={handleSearch} placeholder="Digite sua busca" />
     </HeaderContainer>
   )
 }
