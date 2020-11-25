@@ -11,7 +11,7 @@ import {
 const FoundObject = ({ image, item, place, category, date, description }) => (
   <Container>
     <Image>
-      <img src={image} alt="bird" />
+      <img src={image} alt={item} />
     </Image>
     <DescriptionContainer>
       <DescriptionLine>

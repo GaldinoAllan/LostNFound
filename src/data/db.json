@@ -29,124 +29,196 @@
       "idCargo": "1"
     }
   ],
-  "cargo": [
-    {
-      "idCargo": "1",
-      "cargo": "Professor"
-    },
-    {
-      "idCargo": "2",
-      "cargo": "Coordenador"
-    },
-    {
-      "idCargo": "3",
-      "cargo": "Diretor"
-    }
-  ],
-  "local": [
-    {
-      "idLocal": "1",
-      "local": "Sala 315"
-    },
-    {
-      "idLocal": "2",
-      "local": "Sala 215"
-    },
-    {
-      "idLocal": "3 ",
-      "local": "Sala 317"
-    }
-  ],
-  "item": [
+  "cargos": [
     {
       "id": "1",
-      "image": "../assets/templateBird.png",
-      "item": "Estojo",
-      "data": "18/09/2020",
-      "descricao": "Estojo rosa com chaveiro de urso",
-      "idCategoria": "1",
-      "idLocal": "1"
+      "name": "Professor"
     },
     {
       "id": "2",
-      "image": "../assets/templateBird.png",
-      "item": "Cardeno",
-      "data": "27/09/2020",
-      "descricao": "Cardeno tilibra preto",
-      "idCategoria": "1",
-      "idLocal": "1"
+      "name": "Coordenador"
     },
     {
       "id": "3",
+      "name": "Diretor"
+    }
+  ],
+  "locais": [
+    {
+      "id": 1,
+      "name": "Sala 315"
+    },
+    {
+      "id": 2,
+      "name": "Sala 215"
+    },
+    {
+      "id": 3,
+      "name": "Sala 317"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
       "image": "../assets/templateBird.png",
-      "item": "Pendrive",
-      "data": "05/10/2020",
-      "descricao": "Pendrive do miranha 16gb",
-      "idCategoria": "3",
+      "name": "Estojo",
+      "date": "18/09/2020",
+      "description": "Estojo rosa com chaveiro de urso",
+      "idCategory": "1",
       "idLocal": "1"
     },
     {
-      "id": "4",
+      "id": 2,
       "image": "../assets/templateBird.png",
-      "item": "Caneta",
-      "data": "07/10/2020",
-      "descricao": "caneta bic",
-      "idCategoria": "1",
+      "name": "Cardeno",
+      "date": "27/09/2020",
+      "description": "Cardeno tilibra preto",
+      "idCategory": "1",
       "idLocal": "1"
     },
     {
-      "id": "5",
+      "id": 3,
       "image": "../assets/templateBird.png",
-      "item": "Blusa",
-      "data": "18/10/2020",
-      "descricao": "blusa ifsp cor verde",
-      "idCategoria": "1",
+      "name": "Pendrive",
+      "date": "05/10/2020",
+      "description": "Pendrive do miranha 16gb",
+      "idCategory": "3",
       "idLocal": "1"
     },
     {
-      "id": "6",
+      "id": 4,
       "image": "../assets/templateBird.png",
-      "item": "Mochila",
-      "data": "10/11/2020",
-      "descricao": "Mochila lilás da polly",
-      "idCategoria": "1",
+      "name": "Caneta",
+      "date": "07/10/2020",
+      "description": "caneta bic",
+      "idCategory": "1",
       "idLocal": "1"
     },
     {
-      "id": "6",
+      "id": 5,
       "image": "../assets/templateBird.png",
-      "item": "Prótese da perna",
-      "data": "10/11/2020",
-      "descricao": "Prótese Sergel tatuada com tatoo de chiclete big big",
-      "idCategoria": "0",
+      "name": "Blusa",
+      "date": "18/10/2020",
+      "description": "blusa ifsp cor verde",
+      "idCategory": "1",
       "idLocal": "1"
     },
     {
-      "id": "7",
+      "id": 6,
       "image": "../assets/templateBird.png",
-      "item": "Documento RG",
-      "data": "13/11/2020",
-      "descricao": "Documento do aluno Allan",
-      "idCategoria": "3",
+      "name": "Mochila",
+      "date": "10/11/2020",
+      "description": "Mochila lilás da polly",
+      "idCategory": "1",
+      "idLocal": "1"
+    },
+    {
+      "id": 7,
+      "image": "../assets/templateBird.png",
+      "name": "Prótese da perna",
+      "date": "10/11/2020",
+      "description": "Prótese Sergel tatuada com tatoo de chiclete big big",
+      "idCategory": "0",
+      "idLocal": "1"
+    },
+    {
+      "id": 8,
+      "image": "../assets/templateBird.png",
+      "name": "Documento RG",
+      "date": "13/11/2020",
+      "description": "asdfasdfasdf",
+      "idCategory": "3",
+      "idLocal": "1"
+    },
+    {
+      "id": 9,
+      "image": "../assets/templateBird.png",
+      "name": "Estojo",
+      "date": "18/09/2020",
+      "description": "asdfasdfads",
+      "idCategory": "1",
+      "idLocal": "1"
+    },
+    {
+      "id": 10,
+      "image": "../assets/templateBird.png",
+      "name": "Cardeno",
+      "date": "27/09/2020",
+      "description": "asdfasdf",
+      "idCategory": "1",
+      "idLocal": "1"
+    },
+    {
+      "id": 11,
+      "image": "../assets/templateBird.png",
+      "name": "Pendrive",
+      "date": "05/10/2020",
+      "description": "Pendrive do miranha 16gb",
+      "idCategory": "3",
+      "idLocal": "1"
+    },
+    {
+      "id": 12,
+      "image": "../assets/templateBird.png",
+      "name": "Caneta",
+      "date": "07/10/2020",
+      "description": "caneta bic",
+      "idCategory": "1",
+      "idLocal": "1"
+    },
+    {
+      "id": 13,
+      "image": "../assets/templateBird.png",
+      "name": "Blusa de frio",
+      "date": "18/10/2020",
+      "description": "blusa ifsp cor verde",
+      "idCategory": "1",
+      "idLocal": "1"
+    },
+    {
+      "id": 14,
+      "image": "../assets/templateBird.png",
+      "name": "Mochila",
+      "date": "10/11/2020",
+      "description": "Mochila lilás da polly",
+      "idCategory": "1",
+      "idLocal": "1"
+    },
+    {
+      "id": 15,
+      "image": "../assets/templateBird.png",
+      "name": "Prótese da perna asdfasdf",
+      "date": "10/11/2020",
+      "description": "Prótese Sergel tatuada com tatoo de chiclete big big",
+      "idCategory": "0",
+      "idLocal": "1"
+    },
+    {
+      "id": 16,
+      "image": "../assets/templateBird.png",
+      "name": "Documento RG",
+      "date": "13/11/2020",
+      "description": "Documento do aluno Allan",
+      "idCategory": "3",
       "idLocal": "1"
     }
   ],
-  "categoria": [
+  "categories": [
     {
-      "idCategoria": "0",
-      "categoria": "outros"
+      "id": 0,
+      "name": "outros"
     },
     {
-      "idCategoria": "1",
-      "categoria": "material escolar"
+      "id": 1,
+      "name": "material escolar"
     },
     {
-      "idCategoria": "2",
-      "categoria": "eletronicos"
+      "id": 2,
+      "name": "eletronicos"
     },
     {
-      "idCategoria": "3",
-      "categoria": "documento"
+      "id": 3,
+      "name": "documento"
     }
   ]
 }
