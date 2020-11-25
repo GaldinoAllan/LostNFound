@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FiHelpCircle } from 'react-icons/fi'
+import { FaRegQuestionCircle } from 'react-icons/fa'
 
 import InfoModal from '../components/InfoModal'
 import FoundObject from '../components/FoundObject'
@@ -26,7 +26,7 @@ const Landing = () => {
       <LandingHeader>
         <Title>Objetos encontrados</Title>
         <Info onClick={handleOpenModal}>
-          <FiHelpCircle />
+          <FaRegQuestionCircle />
         </Info>
       </LandingHeader>
       {modalIsOpen && (

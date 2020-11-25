@@ -17,11 +17,15 @@ body {
 }
 
 body, input, button, textarea {
-  font: 400 18px Montserrat, sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, p{
   color: #5C5C5C;
+}
+
+a, button{
+  cursor: pointer;
 }
 `;
 

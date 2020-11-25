@@ -30,8 +30,4 @@ export const Title = styled(Link)`
     width: unset;
     font-size: 20px;
   }
-
-  &:hover{
-    color: #5C5C5C;
-  }
 `
