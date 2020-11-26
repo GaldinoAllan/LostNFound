@@ -25,15 +25,15 @@ const Landing = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [items, setItems] = useState([])
   const [categories, setCategories] = useState([])
-  const [locais, setLocais] = useState([])
+  const [places, setPlaces] = useState([])
   const [currentData, setCurrentData] = useState([]);
 
   useEffect(() => {
     api.get('items').then(response => {
       setItems(response.data)
     })
-    api.get('locais').then(response => {
-      setLocais(response.data)
+    api.get('places').then(response => {
+      setPlaces(response.data)
     });
     api.get('categories').then(response => {
       setCategories(response.data)
@@ -60,21 +60,29 @@ const Landing = () => {
         <InfoModal isOpen={modalIsOpen} setIsOpen={handleOpenModal} />
       )}
       <Content>
-        {currentData.map(item => (
-          <FoundObject
-            key={item.id}
-            image={item.image}
-            item={item.name}
-            place={getById(item.idLocal, locais)}
-            category={getById(item.idCategory, categories)}
-            date={item.date}
-            description={item.description}
-          />
-        ))}
+        {currentData.map(({
+          id,
+          image,
+          name,
+          placeId,
+          categoryId,
+          date,
+          description
+        }) => (
+            <FoundObject
+              key={id}
+              image={image}
+              item={name}
+              place={getById(placeId, places)}
+              category={getById(categoryId, categories)}
+              date={date}
+              description={description}
+            />
+          ))}
       </Content>
       <Paginator
         totalRecords={items.length}
-        pageLimit={8}
+        pageLimit={pageLimit}
         pageNeighbours={1}
         setOffset={setOffset}
         currentPage={currentPage}

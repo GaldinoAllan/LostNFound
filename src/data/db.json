@@ -1,35 +1,35 @@
 {
-  "administrador": [
+  "administrators": [
     {
-      "nome": "Allan",
+      "id": "1",
+      "name": "Allan",
       "email": "a@gmail.com",
-      "senha": "123456",
-      "prontuario": "1",
-      "idCargo": "3"
+      "password": "123456",
+      "positionId": "3"
     },
     {
-      "nome": "Gabi",
+      "id": "12",
+      "name": "Gabi",
       "email": "gabi@gmail.com",
-      "senha": "123456",
-      "prontuario": "12",
-      "idCargo": "2"
+      "password": "123456",
+      "positionId": "2"
     },
     {
-      "nome": "Gabriel",
+      "id": "123",
+      "name": "Gabriel",
       "email": "ga@gmail.com",
-      "senha": "123456",
-      "prontuario": "123",
-      "idCargo": "1"
+      "password": "123456",
+      "positionId": "1"
     },
     {
-      "nome": "Jean",
+      "id": "1234",
+      "name": "Jean",
       "email": "j@gmail.com",
-      "senha": "123456",
-      "prontuario": "1234",
-      "idCargo": "1"
+      "password": "123456",
+      "positionId": "1"
     }
   ],
-  "cargos": [
+  "positions": [
     {
       "id": "1",
       "name": "Professor"
@@ -43,7 +43,7 @@
       "name": "Diretor"
     }
   ],
-  "locais": [
+  "places": [
     {
       "id": 1,
       "name": "Sala 315"
@@ -60,147 +60,147 @@
   "items": [
     {
       "id": 1,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Estojo",
       "date": "18/09/2020",
       "description": "Estojo rosa com chaveiro de urso",
-      "idCategory": "1",
-      "idLocal": "1"
+      "categoryId": "1",
+      "placeId": "1"
     },
     {
       "id": 2,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Cardeno",
       "date": "27/09/2020",
       "description": "Cardeno tilibra preto",
-      "idCategory": "1",
-      "idLocal": "1"
+      "categoryId": "1",
+      "placeId": "1"
     },
     {
       "id": 3,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Pendrive",
       "date": "05/10/2020",
       "description": "Pendrive do miranha 16gb",
-      "idCategory": "3",
-      "idLocal": "1"
+      "categoryId": "3",
+      "placeId": "1"
     },
     {
       "id": 4,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Caneta",
       "date": "07/10/2020",
       "description": "caneta bic",
-      "idCategory": "1",
-      "idLocal": "1"
+      "categoryId": "1",
+      "placeId": "1"
     },
     {
       "id": 5,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Blusa",
       "date": "18/10/2020",
       "description": "blusa ifsp cor verde",
-      "idCategory": "1",
-      "idLocal": "1"
+      "categoryId": "1",
+      "placeId": "1"
     },
     {
       "id": 6,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Mochila",
       "date": "10/11/2020",
       "description": "Mochila lilás da polly",
-      "idCategory": "1",
-      "idLocal": "1"
+      "categoryId": "1",
+      "placeId": "1"
     },
     {
       "id": 7,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Prótese da perna",
       "date": "10/11/2020",
       "description": "Prótese Sergel tatuada com tatoo de chiclete big big",
-      "idCategory": "0",
-      "idLocal": "1"
+      "categoryId": "0",
+      "placeId": "1"
     },
     {
       "id": 8,
-      "image": "../assets/templateBird.png",
-      "name": "Documento RG",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
+      "name": "Doc RG",
       "date": "13/11/2020",
       "description": "asdfasdfasdf",
-      "idCategory": "3",
-      "idLocal": "1"
+      "categoryId": "3",
+      "placeId": "1"
     },
     {
       "id": 9,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Estojo",
       "date": "18/09/2020",
       "description": "asdfasdfads",
-      "idCategory": "1",
-      "idLocal": "1"
+      "categoryId": "1",
+      "placeId": "1"
     },
     {
       "id": 10,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Cardeno",
       "date": "27/09/2020",
       "description": "asdfasdf",
-      "idCategory": "1",
-      "idLocal": "1"
+      "categoryId": "1",
+      "placeId": "1"
     },
     {
       "id": 11,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Pendrive",
       "date": "05/10/2020",
       "description": "Pendrive do miranha 16gb",
-      "idCategory": "3",
-      "idLocal": "1"
+      "categoryId": "3",
+      "placeId": "1"
     },
     {
       "id": 12,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Caneta",
       "date": "07/10/2020",
       "description": "caneta bic",
-      "idCategory": "1",
-      "idLocal": "1"
+      "categoryId": "1",
+      "placeId": "1"
     },
     {
       "id": 13,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Blusa de frio",
       "date": "18/10/2020",
       "description": "blusa ifsp cor verde",
-      "idCategory": "1",
-      "idLocal": "1"
+      "categoryId": "1",
+      "placeId": "1"
     },
     {
       "id": 14,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Mochila",
       "date": "10/11/2020",
       "description": "Mochila lilás da polly",
-      "idCategory": "1",
-      "idLocal": "1"
+      "categoryId": "1",
+      "placeId": "1"
     },
     {
       "id": 15,
-      "image": "../assets/templateBird.png",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
       "name": "Prótese da perna asdfasdf",
       "date": "10/11/2020",
       "description": "Prótese Sergel tatuada com tatoo de chiclete big big",
-      "idCategory": "0",
-      "idLocal": "1"
+      "categoryId": "0",
+      "placeId": "1"
     },
     {
       "id": 16,
-      "image": "../assets/templateBird.png",
-      "name": "Documento RG",
+      "image": "http://localhost:3000/assets/templateImage.jpg",
+      "name": "Doc RG",
       "date": "13/11/2020",
       "description": "Documento do aluno Allan",
-      "idCategory": "3",
-      "idLocal": "1"
+      "categoryId": "3",
+      "placeId": "1"
     }
   ],
   "categories": [

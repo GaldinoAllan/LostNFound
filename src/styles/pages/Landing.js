@@ -22,6 +22,7 @@ export const LandingContainer = styled.div`
 
 export const Title = styled.h1`
   font-size: 30px;
+  margin-bottom: 24px;
 `
 
 export const LandingHeader = styled.div`
@@ -52,8 +53,8 @@ export const Info = styled.div`
   }
 
   @media screen and (max-width: 800px){
-    width: 54px;
-    height: 54px;
+    width: 83px;
+    height: 64px;
   }
 `
 export const Content = styled.div`
@@ -67,5 +68,7 @@ export const Content = styled.div`
     flex-wrap: unset;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-self: center;
+    justify-self: center;
   }
 `
