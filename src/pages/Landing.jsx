@@ -71,6 +71,7 @@ const Landing = () => {
         }) => (
             <FoundObject
               key={id}
+              id={id}
               image={image}
               item={name}
               place={getById(placeId, places)}

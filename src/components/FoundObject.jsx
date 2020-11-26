@@ -13,58 +13,78 @@ import {
   Buttons
 } from '../styles/components/FoundObject'
 
-const FoundObject = ({ image, item, place, category, date, description }) => (
-  <FoundObj>
-    <Container>
-      <Image>
-        <img src={image} alt={item} />
-      </Image>
-      <DescriptionContainer>
-        <DescriptionLine>
+const FoundObject = ({
+  id,
+  image,
+  item,
+  place,
+  category,
+  date,
+  description
+}) => {
+  const handleDelete = () => {
+    console.log(`Delete function called ${id}`);
+  }
+
+  const handleUpdate = () => {
+    console.log(`Update function called ${id}`);
+  }
+
+  return (
+    <FoundObj>
+      <Container>
+        <Image>
+          <img src={image} alt={item} />
+        </Image>
+        <DescriptionContainer>
+          <DescriptionLine>
+            <DescriptionItem>
+              <DescriptionTitle>Item</DescriptionTitle>
+              <DescriptionText>{item}</DescriptionText>
+            </DescriptionItem>
+            <DescriptionItem>
+              <DescriptionTitle>Categoria</DescriptionTitle>
+              <DescriptionText>{category}</DescriptionText>
+            </DescriptionItem>
+          </DescriptionLine>
+          <DescriptionLine>
+            <DescriptionItem>
+              <DescriptionTitle>Local</DescriptionTitle>
+              <DescriptionText>{place}</DescriptionText>
+            </DescriptionItem>
+            <DescriptionItem>
+              <DescriptionTitle>Data</DescriptionTitle>
+              <DescriptionText>{date}</DescriptionText>
+            </DescriptionItem>
+          </DescriptionLine>
           <DescriptionItem>
-            <DescriptionTitle>Item</DescriptionTitle>
-            <DescriptionText>{item}</DescriptionText>
+            <DescriptionTitle>Descrição</DescriptionTitle>
+            <DescriptionText>{description}</DescriptionText>
           </DescriptionItem>
-          <DescriptionItem>
-            <DescriptionTitle>Categoria</DescriptionTitle>
-            <DescriptionText>{category}</DescriptionText>
-          </DescriptionItem>
-        </DescriptionLine>
-        <DescriptionLine>
-          <DescriptionItem>
-            <DescriptionTitle>Local</DescriptionTitle>
-            <DescriptionText>{place}</DescriptionText>
-          </DescriptionItem>
-          <DescriptionItem>
-            <DescriptionTitle>Data</DescriptionTitle>
-            <DescriptionText>{date}</DescriptionText>
-          </DescriptionItem>
-        </DescriptionLine>
-        <DescriptionItem>
-          <DescriptionTitle>Descrição</DescriptionTitle>
-          <DescriptionText>{description}</DescriptionText>
-        </DescriptionItem>
-      </DescriptionContainer>
-    </Container>
-    <Buttons>
-      <Button
-        background="teste"
-        icon={
-          <FaTrash />
-        }
-      >
-        Excluir
+        </DescriptionContainer>
+      </Container>
+      <Buttons>
+        <Button
+          background="teste"
+          onClick={handleDelete}
+          icon={
+            <FaTrash />
+          }
+        >
+          Excluir
       </Button>
-      <Button
-        background="teste"
-        icon={
-          <FaEdit />
-        }
-      >
-        Editar
+        <Button
+          background="teste"
+          onClick={handleUpdate}
+          icon={
+            <FaEdit />
+          }
+        >
+          Editar
       </Button>
-    </Buttons>
-  </FoundObj>
-)
+      </Buttons>
+    </FoundObj>
+  )
+}
 
 export default FoundObject

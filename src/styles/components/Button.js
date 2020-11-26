@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  display: flex;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   align-items: center;
-  justify-content: space-between;
   background: #000;
   height: 28px;
   border-radius: 8px;
@@ -12,14 +13,22 @@ export const Container = styled.div`
   color: #FFF;
   width: 100%;
 
+  div{
+    align-self: center;
+    justify-self: center;
+  }
+
   p{
-    color: #FFF
+    color: #FFF;
+    font-size: 12px;
+    align-self: center;
+    justify-self: center;
   }
 
   @media screen and (max-width: 800px){
     width: unset;
-    justify-content: center;
-    
+    grid-template-columns: 1fr;
+
     p{
       display: none;
     }
