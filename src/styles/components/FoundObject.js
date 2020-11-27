@@ -6,7 +6,7 @@ export const FoundObj = styled.div`
 
 export const Container = styled.div`
   max-width: 210px;
-  min-height: 300px;
+  height: 300px;
   margin: 8px 24px;
   background: #FFFFFF;
   box-shadow: 2px 4px 13px rgba(0, 0, 0, 0.39);
@@ -15,16 +15,16 @@ export const Container = styled.div`
   grid-template-columns: 1fr;
 
   @media screen and (max-width: 800px){
-    margin: 8px 16px;
-    width: 140px;
+    margin: 8px 8px;
+    width: 160px;
   }
 `
 
 export const Image = styled.div`
   width: 190px;
-  height: 150px;
+  height: 125px;
   margin: 10px;
-  align-self: center;
+  align-self: flex-start;
   justify-self: center;
 
   img{
@@ -34,12 +34,12 @@ export const Image = styled.div`
   }
 
   @media screen and (max-width: 800px){
-    width: 120px;
-    height: 90px;
+    width: 140px;
+    height: 125px;
 
     img{
-      width: 120px;
-      height: 90px;
+      width: 140px;
+      height: 150px;
     }
   }
 `
@@ -47,7 +47,9 @@ export const Image = styled.div`
 export const DescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 12px 16px;
+  justify-content: flex-start;
+  margin: 0 12px;
+  height: 105px;
 `
 
 export const DescriptionLine = styled.div`
