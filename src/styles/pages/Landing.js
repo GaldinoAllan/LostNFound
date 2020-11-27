@@ -15,7 +15,7 @@ export const LandingContainer = styled.div`
   }
 
   @media screen and (max-width: 800px){
-    margin: 8px;
+    margin: 8px 8px 16px;
   }
 `
 

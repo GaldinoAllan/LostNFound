@@ -47,10 +47,6 @@ export const Column = styled.div`
   a{
     text-decoration: none;
     color: #5c5c5c;
-
-    &:hover{
-      color: #5c5c5c;
-    }
   }
 `
 
@@ -61,6 +57,11 @@ export const ColumnCenter = styled.div`
   
   p{
     font-size: 12px;
+  }
+
+  a{
+    text-decoration: none;
+    color: #5c5c5c;
   }
   
   @media screen and (min-width: 800px) {
