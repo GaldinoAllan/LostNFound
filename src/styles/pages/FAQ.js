@@ -22,10 +22,18 @@ export const FAQContainer = styled.div`
 export const Title = styled.h1`
   margin: 48px auto 0 80px;
   font-size: 30px;
+
+  @media screen and (max-width: 800px){
+    margin: unset;
+  }
 `
 
 export const QuestionsContainer = styled.div`
   margin: 56px 180px;
+
+  @media screen and (max-width: 800px){
+    margin: 42px 0;
+  }
 `
 
 export const QuestionTitle = styled.h3`
@@ -42,5 +50,10 @@ export const Answer = styled.p`
 `
 
 export const MoreQuestions = styled.p`
-  margin: 56px 80px
+  margin: 56px 80px;
+  font-size: 14px;
+  
+  @media screen and (max-width: 800px){
+    margin: 56px 0;
+  }
 `

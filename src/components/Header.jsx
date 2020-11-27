@@ -18,7 +18,10 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Title to="/">Achados e Perdidos IFSP</Title>
-      <SearchInput handleSearch={handleSearch} placeholder="Digite sua busca" />
+      <SearchInput
+        handleSearch={handleSearch}
+        placeholder="Digite o objeto desejado"
+      />
     </HeaderContainer>
   )
 }
