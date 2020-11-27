@@ -1,16 +1,11 @@
 import styled from 'styled-components'
 
 export const FAQContainer = styled.div`
-  margin: 80px;
+  margin: 80px auto;
   max-width: 1275px;
   background-color: #FCFCFC;
   display: flex;
   flex-direction: column;
-  
-  @media screen and (min-width: 1400px) {
-    margin: 80px auto;
-  }
-
   padding: 20px;
   padding-bottom: 50px;
 

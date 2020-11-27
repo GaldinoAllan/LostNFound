@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const LandingContainer = styled.div`
-  margin: 80px;
+  margin: 24px auto;
   max-width: 1275px;
   min-height: 1144px;
   background-color: #FCFCFC;
@@ -9,10 +9,6 @@ export const LandingContainer = styled.div`
   flex-direction: column;
   padding: 20px;
   padding-bottom: 50px;
-  
-  @media screen and (min-width: 1400px) {
-    margin: 80px auto;
-  }
 
   @media screen and (max-width: 800px){
     margin: 8px 8px 16px;
