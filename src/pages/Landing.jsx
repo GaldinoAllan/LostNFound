@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { FaRegQuestionCircle } from 'react-icons/fa'
+import { FaRegQuestionCircle, FaPlus } from 'react-icons/fa'
 import Paginator from 'react-hooks-paginator'
 
 import InfoModal from '../components/InfoModal'
@@ -14,8 +14,11 @@ import {
   Title,
   Info,
   LandingHeader,
-  Content
+  Content,
+  ButtonContent,
+  ButtonContainer
 } from '../styles/pages/Landing'
+import Button from '../components/Button'
 
 const Landing = () => {
   const pageLimit = 8
@@ -46,6 +49,10 @@ const Landing = () => {
 
   const handleOpenModal = () => {
     setModalIsOpen(!modalIsOpen)
+  }
+
+  const handleAddItem = () => {
+    console.log('Add Item function called');
   }
 
   return (
@@ -89,6 +96,17 @@ const Landing = () => {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
+      <ButtonContainer>
+        <ButtonContent>
+          <Button
+            background='add'
+            icon={<FaPlus />}
+            onClick={handleAddItem}
+          >
+            Adicionar Item
+          </Button>
+        </ButtonContent>
+      </ButtonContainer>
     </LandingContainer>
   )
 }

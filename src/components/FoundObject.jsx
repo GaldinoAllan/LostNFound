@@ -23,11 +23,11 @@ const FoundObject = ({
   description
 }) => {
   const handleDelete = () => {
-    console.log(`Delete function called ${id}`);
+    console.log(`Delete function called for object ${id}`);
   }
 
   const handleUpdate = () => {
-    console.log(`Update function called ${id}`);
+    console.log(`Update function called for object ${id}`);
   }
 
   return (
@@ -65,7 +65,7 @@ const FoundObject = ({
       </Container>
       <Buttons>
         <Button
-          background="teste"
+          background="remove"
           onClick={handleDelete}
           icon={
             <FaTrash />
@@ -74,7 +74,7 @@ const FoundObject = ({
           Excluir
       </Button>
         <Button
-          background="teste"
+          background="edit"
           onClick={handleUpdate}
           icon={
             <FaEdit />

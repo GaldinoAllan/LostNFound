@@ -7,13 +7,12 @@ export const LandingContainer = styled.div`
   background-color: #FCFCFC;
   display: flex;
   flex-direction: column;
+  padding: 20px;
+  padding-bottom: 50px;
   
   @media screen and (min-width: 1400px) {
     margin: 80px auto;
   }
-
-  padding: 20px;
-  padding-bottom: 50px;
 
   @media screen and (max-width: 800px){
     margin: 8px;
@@ -35,6 +34,7 @@ export const LandingHeader = styled.div`
     margin: unset;
   }
 `
+
 export const Info = styled.div`
   width: 80px;
   height: 80px;
@@ -57,6 +57,7 @@ export const Info = styled.div`
     height: 64px;
   }
 `
+
 export const Content = styled.div`
   display: flex;
   margin: 16px;
@@ -70,5 +71,26 @@ export const Content = styled.div`
     grid-template-columns: 1fr 1fr;
     align-self: center;
     justify-self: center;
+  }
+`
+
+export const ButtonContent = styled.div`
+  width: 200px;
+  height: 56px;
+  margin: 0 64px;
+
+  @media screen and (max-width: 800px){
+    width: 100%;
+  }
+`
+
+export const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  @media screen and (max-width: 800px){
+    justify-content: center;
   }
 `

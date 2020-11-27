@@ -83,4 +83,5 @@ export const Buttons = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 8px;
   margin: 0 24px 16px;
+  height: 30px;
 `
