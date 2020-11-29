@@ -4,6 +4,7 @@ import Paginator from 'react-hooks-paginator'
 
 import InfoModal from '../components/InfoModal'
 import FoundObject from '../components/FoundObject'
+import Spinner from '../components/Spinner'
 
 import getById from '../utils/getById';
 
@@ -24,12 +25,13 @@ const Landing = () => {
   const pageLimit = 8
 
   const [offset, setOffset] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1)
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [items, setItems] = useState([])
   const [categories, setCategories] = useState([])
   const [places, setPlaces] = useState([])
-  const [currentData, setCurrentData] = useState([]);
+  const [currentData, setCurrentData] = useState([])
+  const [pageLoading, setPageLoading] = useState(true)
 
   useEffect(() => {
     api.get('items').then(response => {
@@ -41,6 +43,8 @@ const Landing = () => {
     api.get('categories').then(response => {
       setCategories(response.data)
     });
+
+    setPageLoading(false)
   }, [])
 
   useEffect(() => {
@@ -66,36 +70,42 @@ const Landing = () => {
       {modalIsOpen && (
         <InfoModal isOpen={modalIsOpen} setIsOpen={handleOpenModal} />
       )}
-      <Content>
-        {currentData.map(({
-          id,
-          image,
-          name,
-          placeId,
-          categoryId,
-          date,
-          description
-        }) => (
-            <FoundObject
-              key={id}
-              id={id}
-              image={image}
-              item={name}
-              place={getById(placeId, places)}
-              category={getById(categoryId, categories)}
-              date={date}
-              description={description}
+      {
+        pageLoading
+          ? <Spinner />
+          : <>
+            <Content>
+              {currentData.map(({
+                id,
+                image,
+                name,
+                placeId,
+                categoryId,
+                date,
+                description
+              }) => (
+                  <FoundObject
+                    key={id}
+                    id={id}
+                    image={image}
+                    item={name}
+                    place={getById(placeId, places)}
+                    category={getById(categoryId, categories)}
+                    date={date}
+                    description={description}
+                  />
+                ))}
+            </Content>
+            <Paginator
+              totalRecords={items.length}
+              pageLimit={pageLimit}
+              pageNeighbours={1}
+              setOffset={setOffset}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
             />
-          ))}
-      </Content>
-      <Paginator
-        totalRecords={items.length}
-        pageLimit={pageLimit}
-        pageNeighbours={1}
-        setOffset={setOffset}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+          </>
+      }
       <ButtonContainer>
         <ButtonContent>
           <Button
