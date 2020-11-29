@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
+import * as Yup from 'yup'
 
 import Position from '../models/Position'
 
@@ -17,7 +18,17 @@ export default {
 
     const positionRepository = getRepository(Position)
 
-    const position = positionRepository.create({ name })
+    const data = { name }
+
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+    });
+
+    await schema.validate(data, {
+      abortEarly: false,
+    })
+
+    const position = positionRepository.create(data)
 
     await positionRepository.save(position)
 

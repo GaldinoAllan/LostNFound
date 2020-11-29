@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
+import * as Yup from 'yup'
 
 import Administrator from '../models/Administrator'
 import administratorView from '../views/administrator_view'
@@ -23,12 +24,25 @@ export default {
 
     const administratorsRepository = getRepository(Administrator)
 
-    const administrator = administratorsRepository.create({
+    const data = {
       name,
       email,
       password,
       position_id,
+    }
+
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      email: Yup.string().email().required(),
+      password: Yup.string().required().min(6),
+      position_id: Yup.number().required(),
+    });
+
+    await schema.validate(data, {
+      abortEarly: false,
     })
+
+    const administrator = administratorsRepository.create(data)
 
     await administratorsRepository.save(administrator)
 
