@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
 
 import Administrator from '../models/Administrator'
+import administratorView from '../views/administrator_view'
 
 export default {
   async index(request: Request, response: Response) {
@@ -9,7 +10,7 @@ export default {
 
     const administrators = await administratorsRepository.find()
 
-    return response.json(administrators)
+    return response.json(administratorView.renderMany(administrators))
   },
 
   async create(request: Request, response: Response) {
