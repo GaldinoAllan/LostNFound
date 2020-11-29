@@ -26,8 +26,8 @@ const Footer = () => (
         <p>(11) 4602-9191</p>
       </ColumnCenter>
       <ColumnCenter>
-        <h3>Login</h3>
-        <h3>Register</h3>
+        <h3><Link to="/login">Login</Link></h3>
+        <h3><Link to="/register">Register</Link></h3>
       </ColumnCenter>
     </FooterContent>
   </FooterContainer>
