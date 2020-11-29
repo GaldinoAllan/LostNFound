@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
+import itemView from '../views/items_view'
 
 import Item from '../models/Item'
 
@@ -7,9 +8,11 @@ export default {
   async index(request: Request, response: Response) {
     const itemsRepository = getRepository(Item)
 
-    const items = await itemsRepository.find()
+    const items = await itemsRepository.find({
+      relations: ['images']
+    })
 
-    return response.json(items)
+    return response.json(itemView.renderMany(items))
   },
 
   async show(request: Request, response: Response) {
@@ -17,9 +20,11 @@ export default {
 
     const itemsRepository = getRepository(Item)
 
-    const item = await itemsRepository.findOneOrFail(id)
+    const item = await itemsRepository.findOneOrFail(id, {
+      relations: ['images']
+    })
 
-    return response.json(item)
+    return response.json(itemView.render(item))
   },
 
   async create(request: Request, response: Response) {
