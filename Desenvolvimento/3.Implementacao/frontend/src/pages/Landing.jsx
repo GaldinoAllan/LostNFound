@@ -35,6 +35,7 @@ const Landing = () => {
 
   useEffect(() => {
     api.get('items').then(response => {
+      console.log(response.data);
       setItems(response.data)
     })
     api.get('places').then(response => {
@@ -77,20 +78,20 @@ const Landing = () => {
             <Content>
               {currentData.map(({
                 id,
-                image,
+                images,
                 name,
-                placeId,
-                categoryId,
+                place_id,
+                category_id,
                 date,
                 description
               }) => (
                   <FoundObject
                     key={id}
                     id={id}
-                    image={image}
+                    image={images[0].url}
                     item={name}
-                    place={getById(placeId, places)}
-                    category={getById(categoryId, categories)}
+                    place={getById(place_id, places)}
+                    category={getById(category_id, categories)}
                     date={date}
                     description={description}
                   />

@@ -1,6 +1,6 @@
 export default function getById(id, data) {
   const fileName = data.map(file => {
-    const name = Number(id) === file.id ? file.name : '';
+    const name = id === file.id ? file.name : '';
     return name
   });
 
