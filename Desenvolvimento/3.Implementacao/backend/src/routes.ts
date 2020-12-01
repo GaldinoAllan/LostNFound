@@ -14,23 +14,29 @@ const routes = Router()
 const upload = multer(uploadConfig)
 
 // Administrators
-routes.get('/administrators', AdministratorsController.index)
 routes.post('/administrators', AdministratorsController.create)
+routes.get('/administrators', AdministratorsController.index)
+routes.delete('/administrators/:id', AdministratorsController.delete)
 
 // Positions
-routes.get('/positions', PositionsController.index)
 routes.post('/positions', PositionsController.create)
+routes.get('/positions', PositionsController.index)
+routes.delete('/positions/:id', PositionsController.delete)
 
 // Places
-routes.get('/places', PlacesController.index)
 routes.post('/places', PlacesController.create)
+routes.get('/places', PlacesController.index)
+routes.delete('/places/:id', PlacesController.delete)
 
 // Items
+routes.post('/items', upload.array('images'), ItemsController.create)
 routes.get('/items', ItemsController.index)
 routes.get('/items/:id', ItemsController.show)
-routes.post('/items', upload.array('images'), ItemsController.create)
+routes.delete('/items/:id', ItemsController.delete)
 
 // Categories
-routes.get('/categories', CategoriesController.index)
 routes.post('/categories', CategoriesController.create)
+routes.get('/categories', CategoriesController.index)
+routes.delete('/categories/:id', CategoriesController.delete)
+
 export default routes

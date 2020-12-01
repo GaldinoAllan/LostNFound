@@ -33,5 +33,15 @@ export default {
     await categoryRepository.save(category)
 
     return response.status(201).json(category)
+  },
+
+  async delete(request: Request, response: Response) {
+    const { id } = request.params
+
+    const categoryRepository = getRepository(Category)
+
+    await categoryRepository.delete(id)
+
+    return response.json({ message: `Category ${id} Deleted` })
   }
 }

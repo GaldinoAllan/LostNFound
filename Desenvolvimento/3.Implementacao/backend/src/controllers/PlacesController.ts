@@ -33,5 +33,15 @@ export default {
     await placeRepository.save(place)
 
     return response.status(201).json(place)
+  },
+
+  async delete(request: Request, response: Response) {
+    const { id } = request.params
+
+    const placeRepository = getRepository(Place)
+
+    await placeRepository.delete(id)
+
+    return response.json({ message: `Place ${id} Deleted` })
   }
 }

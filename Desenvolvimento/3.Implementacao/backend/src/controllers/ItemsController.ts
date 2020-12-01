@@ -76,5 +76,15 @@ export default {
     await itemsRepository.save(item)
 
     return response.status(201).json(item)
+  },
+
+  async delete(request: Request, response: Response) {
+    const { id } = request.params
+
+    const itemsRepository = getRepository(Item)
+
+    await itemsRepository.delete(id)
+
+    return response.json({ message: `Item ${id} Deleted` })
   }
 }

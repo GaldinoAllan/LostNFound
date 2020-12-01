@@ -33,5 +33,15 @@ export default {
     await positionRepository.save(position)
 
     return response.status(201).json(position)
+  },
+
+  async delete(request: Request, response: Response) {
+    const { id } = request.params
+
+    const positionRepository = getRepository(Position)
+
+    await positionRepository.delete(id)
+
+    return response.json({ message: `Position ${id} Deleted` })
   }
 }

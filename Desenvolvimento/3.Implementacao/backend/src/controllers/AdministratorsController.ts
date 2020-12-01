@@ -47,5 +47,15 @@ export default {
     await administratorsRepository.save(administrator)
 
     return response.status(201).json(administrator)
+  },
+
+  async delete(request: Request, response: Response) {
+    const { id } = request.params
+
+    const administratorsRepository = getRepository(Administrator)
+
+    await administratorsRepository.delete(id)
+
+    return response.json({ message: `Administrator ${id} Deleted` })
   }
 }
