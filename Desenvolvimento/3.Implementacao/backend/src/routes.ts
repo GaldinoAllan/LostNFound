@@ -34,7 +34,7 @@ routes.delete('/places/:id', PlacesController.delete)
 routes.post('/items', upload.array('images'), ItemsController.create)
 routes.get('/items', ItemsController.index)
 routes.get('/items/:id', ItemsController.show)
-// routes.put('/items/:id', ItemsController.update)
+routes.put('/items/:id', ItemsController.update)
 routes.delete('/items/:id', ItemsController.delete)
 
 // Categories

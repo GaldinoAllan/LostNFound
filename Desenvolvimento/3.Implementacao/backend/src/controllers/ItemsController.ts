@@ -86,5 +86,59 @@ export default {
     await itemsRepository.delete(id)
 
     return response.json({ message: `Item ${id} Deleted` })
+  },
+
+  async update(request: Request, response: Response) {
+    const {
+      name,
+      description,
+      date,
+      category_id,
+      place_id
+    } = request.body
+
+    console.log(request.body);
+
+    const { id } = request.params
+
+    const itemsRepository = getRepository(Item)
+
+    // const requestImages = request.files as Express.Multer.File[]
+
+    // if (requestImages) {
+    //   const images = requestImages.map(image => {
+    //     return { path: image.filename }
+    //   })
+    // }
+
+    const newData = {
+      name,
+      description,
+      date,
+      category_id,
+      place_id,
+      // images,
+    }
+
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      description: Yup.string().required().max(300),
+      date: Yup.date().required(),
+      category_id: Yup.number().required(),
+      place_id: Yup.number().required(),
+      // images: Yup.array(
+      //   Yup.object().shape({
+      //     path: Yup.string().required(),
+      //   })
+      // )
+    });
+
+    await schema.validate(newData, {
+      abortEarly: false,
+    })
+
+    await itemsRepository.update(id, newData)
+
+    return response.json({ message: `Item ${id} Updated` })
   }
 }
