@@ -1,11 +1,19 @@
-import {
-  Container
-} from '../styles/pages/Editor'
+import { BrowserRouter } from 'react-router-dom';
 
-const Login = () => (
-  <Container>
-    <h1>Editor</h1>
-  </Container>
-)
+import Nav from '../components/Nav';
+import Logo from '../components/Logo';
+import EditorRoutes from '../routes/Editor.routes';
 
-export default Login
+const Editor = () => {
+  return (
+    <BrowserRouter>
+      <div className="editor">
+        <Logo />
+        <Nav />
+        <EditorRoutes />
+      </div>
+    </BrowserRouter>
+  )
+}
+
+export default Editor;

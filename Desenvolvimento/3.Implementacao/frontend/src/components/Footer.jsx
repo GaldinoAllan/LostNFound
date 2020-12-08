@@ -33,7 +33,7 @@ const Footer = () => {
           userLogged
             ? (
               <Column>
-                <h3><Link to="/editor/itens">Página do Editor</Link></h3>
+                <h3><Link to="/editor">Página do Editor</Link></h3>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
                   <div>
                     <p><Link to="/editor/locais">Locais</Link></p>
@@ -42,7 +42,7 @@ const Footer = () => {
                   </div>
                   <div>
                     <p><Link to="/editor/usuarios">Usuários</Link></p>
-                    <p><Link to="/editor/itens">Itens</Link></p>
+                    <p><Link to="/editor">Itens</Link></p>
                   </div>
                 </div>
               </Column>
