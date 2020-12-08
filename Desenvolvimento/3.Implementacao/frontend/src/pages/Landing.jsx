@@ -5,6 +5,7 @@ import Paginator from 'react-hooks-paginator'
 import InfoModal from '../components/InfoModal'
 import FoundObject from '../components/FoundObject'
 import Spinner from '../components/Spinner'
+import SearchInput from '../components/SearchInput'
 
 import getById from '../utils/getById';
 
@@ -12,6 +13,7 @@ import api from '../server/api'
 
 import {
   LandingContainer,
+  InputContainer,
   Title,
   Info,
   LandingHeader,
@@ -32,6 +34,7 @@ const Landing = () => {
   const [places, setPlaces] = useState([])
   const [currentData, setCurrentData] = useState([])
   const [pageLoading, setPageLoading] = useState(true)
+  // const [search, setSearch] = useState('')
 
   useEffect(() => {
     api.get('items').then(response => {
@@ -60,10 +63,21 @@ const Landing = () => {
     console.log('Add Item function called');
   }
 
+  const handleSearch = e => {
+    console.log(`${e.target.value}`);
+    // setSearch(value)
+  };
+
   return (
     <LandingContainer>
       <LandingHeader>
-        <Title>Objetos encontrados</Title>
+        <InputContainer>
+          <Title>Objetos encontrados</Title>
+          <SearchInput
+            handleSearch={handleSearch}
+            placeholder="Digite o objeto desejado"
+          />
+        </InputContainer>
         <Info onClick={handleOpenModal}>
           <FaRegQuestionCircle />
         </Info>

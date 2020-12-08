@@ -21,7 +21,7 @@ const Nav = () => (
       <MenuLink to="/editor/usuarios">
         Usuarios
       </MenuLink>
-      <MenuLink to="/editor/items">
+      <MenuLink to="/editor">
         Itens
       </MenuLink>
     </Menu>
