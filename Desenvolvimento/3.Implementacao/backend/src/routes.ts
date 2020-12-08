@@ -15,7 +15,7 @@ const upload = multer(uploadConfig)
 // Administrators
 routes.post('/administrators', AdministratorsController.create)
 routes.get('/administrators', AdministratorsController.index)
-// routes.put('/administrators/:id', AdministratorsController.update)
+routes.put('/administrators/:id', AdministratorsController.update)
 routes.delete('/administrators/:id', AdministratorsController.delete)
 
 // Positions
