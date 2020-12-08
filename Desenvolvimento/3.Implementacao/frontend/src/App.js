@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -7,7 +7,7 @@ import Landing from './pages/Landing'
 import FAQ from './pages/FAQ'
 import Login from './pages/Login'
 import Register from './pages/Register'
-// import Item from './pages/Item'
+import Editor from './pages/Editor'
 
 import GlobalStyle from './styles/globalStyles'
 
@@ -21,8 +21,8 @@ function App() {
         <Route path='/faq' component={FAQ} />
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
-        {/* <Route path='/item' component={Item} />
-        <Route path='/item/:id' component={Item} /> */}
+        <Route path='/editor/itens' component={Editor} />
+        <Redirect from="*" to="/" />
       </Switch>
       <Footer />
     </>

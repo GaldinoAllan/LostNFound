@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { FaEye } from 'react-icons/fa'
 
 import ComputerLady from '../assets/computerLady.png'
@@ -70,7 +69,6 @@ const Login = () => {
             <p>Mostrar senha</p>
           </ShowPass>
           <ButtonsContainer>
-            <Link to="/register">Criar nova conta</Link>
             <Button>Login</Button>
           </ButtonsContainer>
         </form>

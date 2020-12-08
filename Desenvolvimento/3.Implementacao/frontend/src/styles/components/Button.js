@@ -2,29 +2,14 @@ import styled, { css } from 'styled-components'
 
 const add = css`
   background-color: #2ecc71;
-  color: black;
-
-  p{
-    color: black
-  }
 `;
 
 const remove = css`
   background-color: #e74c3c;
-  color: white;
-
-  p{
-    color: white
-  }
 `;
 
 const edit = css`
-  background-color: #f1c40f;
-  color: black;
-
-  p{
-    color: black
-  }
+  background-color: #a3a3a3;
 `;
 
 const getButtonColor = props => {
@@ -48,6 +33,7 @@ export const Container = styled.div`
   padding: 0 16px;
   width: 100%;
   flex: 1;
+  color: white;
   ${getButtonColor}
 
   div{
@@ -59,6 +45,7 @@ export const Container = styled.div`
     font-size: 12px;
     align-self: center;
     justify-self: center;
+    color: white
   }
 
   @media screen and (max-width: 800px){
