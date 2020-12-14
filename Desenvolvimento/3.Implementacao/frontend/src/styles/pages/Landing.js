@@ -17,7 +17,8 @@ export const LandingContainer = styled.div`
 
 export const Title = styled.h1`
   font-size: 30px;
-  margin-bottom: 24px;
+  margin-right: 16px;
+
 `
 
 export const LandingHeader = styled.div`
@@ -26,8 +27,21 @@ export const LandingHeader = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 900px){
     margin: unset;
+    margin-bottom: 24px;
+    align-items: flex-start;
+  }
+`
+
+export const InputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-width: 900px){
+    flex-direction: column;
+    align-items: flex-start;
   }
 `
 
@@ -35,7 +49,7 @@ export const Info = styled.div`
   width: 80px;
   height: 80px;
   box-shadow: 2px 4px 13px rgba(0, 0, 0, 0.39);
-  border-radius: 20px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,8 +63,8 @@ export const Info = styled.div`
   }
 
   @media screen and (max-width: 800px){
-    width: 83px;
-    height: 64px;
+    width: 50px;
+    height: 40px;
   }
 `
 

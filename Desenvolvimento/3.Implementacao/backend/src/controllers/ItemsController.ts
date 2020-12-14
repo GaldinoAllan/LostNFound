@@ -76,5 +76,53 @@ export default {
     await itemsRepository.save(item)
 
     return response.status(201).json(item)
+  },
+
+  async delete(request: Request, response: Response) {
+    const { id } = request.params
+
+    const itemsRepository = getRepository(Item)
+
+    await itemsRepository.delete(id)
+
+    return response.json({ message: `Item ${id} Deleted` })
+  },
+
+  async update(request: Request, response: Response) {
+    const {
+      name,
+      description,
+      date,
+      category_id,
+      place_id
+    } = request.body
+
+    const { id } = request.params
+
+    const itemsRepository = getRepository(Item)
+
+    const newData = {
+      name,
+      description,
+      date,
+      category_id,
+      place_id,
+    }
+
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      description: Yup.string().required().max(300),
+      date: Yup.date().required(),
+      category_id: Yup.number().required(),
+      place_id: Yup.number().required(),
+    });
+
+    await schema.validate(newData, {
+      abortEarly: false,
+    })
+
+    await itemsRepository.update(id, newData)
+
+    return response.json({ message: `Item ${id} Updated` })
   }
 }

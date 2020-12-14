@@ -40,6 +40,10 @@ export const Column = styled.div`
   flex-direction: column;
   align-items: left;
 
+  h3{
+    padding-bottom: 4px;
+  }
+
   p{
     font-size: 12px;
   }
@@ -54,6 +58,14 @@ export const ColumnCenter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: left;
+
+  h3{
+    padding-bottom: 4px;
+  }
+
+  &:last-child{
+    justify-content: center;
+  }
   
   p{
     font-size: 12px;

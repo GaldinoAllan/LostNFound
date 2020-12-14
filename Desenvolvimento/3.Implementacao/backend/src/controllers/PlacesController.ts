@@ -33,5 +33,36 @@ export default {
     await placeRepository.save(place)
 
     return response.status(201).json(place)
+  },
+
+  async delete(request: Request, response: Response) {
+    const { id } = request.params
+
+    const placeRepository = getRepository(Place)
+
+    await placeRepository.delete(id)
+
+    return response.json({ message: `Place ${id} Deleted` })
+  },
+
+  async update(request: Request, response: Response) {
+    const { name } = request.body
+    const { id } = request.params
+
+    const placeRepository = getRepository(Place)
+
+    const newData = { name }
+
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+    })
+
+    await schema.validate(newData, {
+      abortEarly: false,
+    })
+
+    await placeRepository.update(id, newData)
+
+    return response.json({ message: `Place ${id} Updated` })
   }
 }

@@ -15,7 +15,7 @@ export default {
       id,
       name,
       description,
-      date: date.toLocaleDateString(),
+      date: date.toLocaleDateString('pt-BR', { timeZone: 'UTC' }),
       category_id,
       place_id,
       images: imagesView.renderMany(images),

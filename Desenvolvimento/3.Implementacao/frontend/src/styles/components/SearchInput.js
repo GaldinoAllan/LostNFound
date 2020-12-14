@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const SearchBox = styled.div`
   transform: translate(0%, 0%);
   background: #ecf0f1;
-  /* height: 40px; */
   border-radius: 40px;
   display: flex;
   align-items: center;
@@ -17,6 +16,12 @@ export const SearchBox = styled.div`
 
   &:hover > div{
     background: #FCFCFC;
+  }
+
+  @media screen and (max-width: 900px){
+  &:hover > input{
+    width: 200px;
+  }
   }
 `
 

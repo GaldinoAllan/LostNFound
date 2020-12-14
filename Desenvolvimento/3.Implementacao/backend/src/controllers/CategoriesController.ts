@@ -33,5 +33,36 @@ export default {
     await categoryRepository.save(category)
 
     return response.status(201).json(category)
+  },
+
+  async delete(request: Request, response: Response) {
+    const { id } = request.params
+
+    const categoryRepository = getRepository(Category)
+
+    await categoryRepository.delete(id)
+
+    return response.json({ message: `Category ${id} Deleted` })
+  },
+
+  async update(request: Request, response: Response) {
+    const { name } = request.body
+    const { id } = request.params
+
+    const categoryRepository = getRepository(Category)
+
+    const newData = { name }
+
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+    })
+
+    await schema.validate(newData, {
+      abortEarly: false,
+    })
+
+    await categoryRepository.update(id, newData)
+
+    return response.json({ message: `Category ${id} Updated` })
   }
 }
