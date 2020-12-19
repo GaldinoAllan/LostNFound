@@ -1,31 +1,43 @@
 import styled, { css } from 'styled-components'
 
-const add = css`
+const green = css`
   background-color: #2ecc71;
 `;
 
-const remove = css`
+const red = css`
   background-color: #e74c3c;
 `;
 
-const edit = css`
+const grey = css`
   background-color: #a3a3a3;
 `;
 
+const blue = css`
+  background-color: #69ADFF;
+`;
+
+const yellow = css`
+  background-color: #FFC804;
+`;
+
 const getButtonColor = props => {
-  if (props.background === "add") {
-    return add
-  } else if (props.background === "remove") {
-    return remove
-  } else if (props.background === "edit") {
-    return edit
+  if (props.background === "green") {
+    return green
+  } else if (props.background === "red") {
+    return red
+  } else if (props.background === "grey") {
+    return grey
+  } else if (props.background === "blue") {
+    return blue
+  } else if (props.background === "yellow") {
+    return yellow
   }
 }
 
 export const Container = styled.div`
   cursor: pointer;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  display: flex;
+  justify-content: space-evenly;
   align-items: center;
   height: 100%;
   border-radius: 8px;

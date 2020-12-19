@@ -5,7 +5,7 @@ const headerProps = {
   subtitle: 'Listagem e edição de todos os cargos',
 };
 
-const Itens = () => {
+const Positions = () => {
   return (
     <Main {...headerProps}>
       <h1>Positions</h1>
@@ -13,4 +13,4 @@ const Itens = () => {
   );
 }
 
-export default Itens
+export default Positions

@@ -5,7 +5,7 @@ const headerProps = {
   subtitle: 'Listagem e edição de todos os usuários',
 };
 
-const Itens = () => {
+const Users = () => {
   return (
     <Main {...headerProps}>
       <h1>Usuários</h1>
@@ -13,4 +13,4 @@ const Itens = () => {
   );
 }
 
-export default Itens
+export default Users

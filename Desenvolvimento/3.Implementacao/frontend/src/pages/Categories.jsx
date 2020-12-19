@@ -5,7 +5,7 @@ const headerProps = {
   subtitle: 'Listagem e edição de todos os categorias',
 };
 
-const Itens = () => {
+const Categories = () => {
   return (
     <Main {...headerProps}>
       <h1>Categorias</h1>
@@ -13,4 +13,4 @@ const Itens = () => {
   );
 }
 
-export default Itens
+export default Categories

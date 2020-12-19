@@ -65,7 +65,7 @@ const FoundObject = ({
       </Container>
       <Buttons>
         <Button
-          background="remove"
+          background="red"
           onClick={handleDelete}
           icon={
             <FaTrash />
@@ -74,7 +74,7 @@ const FoundObject = ({
           Excluir
       </Button>
         <Button
-          background="edit"
+          background="grey"
           onClick={handleUpdate}
           icon={
             <FaEdit />

@@ -99,17 +99,17 @@ const Landing = () => {
                 date,
                 description
               }) => (
-                  <FoundObject
-                    key={id}
-                    id={id}
-                    image={images[0].url}
-                    item={name}
-                    place={getById(place_id, places)}
-                    category={getById(category_id, categories)}
-                    date={date}
-                    description={description}
-                  />
-                ))}
+                <FoundObject
+                  key={id}
+                  id={id}
+                  image={images[0].url}
+                  item={name}
+                  place={getById(place_id, places)}
+                  category={getById(category_id, categories)}
+                  date={date}
+                  description={description}
+                />
+              ))}
             </Content>
             <Paginator
               totalRecords={items.length}
@@ -124,7 +124,7 @@ const Landing = () => {
       <ButtonContainer>
         <ButtonContent>
           <Button
-            background='add'
+            background='green'
             icon={<FaPlus />}
             onClick={handleAddItem}
           >

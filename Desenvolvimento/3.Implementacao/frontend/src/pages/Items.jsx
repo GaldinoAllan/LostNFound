@@ -5,12 +5,12 @@ const headerProps = {
   subtitle: 'Listagem e edição de todos os itens',
 };
 
-const Itens = () => {
+const Items = () => {
   return (
     <Main {...headerProps}>
-      <h1>Itens</h1>
+      <h1>Items</h1>
     </Main>
   );
 }
 
-export default Itens
+export default Items
