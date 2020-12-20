@@ -24,7 +24,7 @@ const headerProps = {
 
 const Places = () => {
   const [places, setPlaces] = useState([])
-  const [place, setPlace] = useState({ name: '' })
+  const [place, setPlace] = useState({ id: 0, name: '' })
   const [searchInput, setSearchInput] = useState('')
 
   useEffect(() => {
@@ -33,40 +33,55 @@ const Places = () => {
     })
   }, [])
 
-  const handleChange = event => {
+  const save = async () => {
+    if (!place.id) {
+      await api.post('places', place).then(response => {
+        const list = getUpdatedList(response.data);
+        setPlaces(list)
+        setPlace({ id: 0, name: '' })
+      });
+    } else {
+      await api.put(`places/${place.id}`, place).then(_ => {
+        const list = getUpdatedList(place, true);
+        setPlace({ id: 0, name: '' })
+        setPlaces(list)
+      });
+    }
+  }
+
+  const edit = newPlace => {
+    setPlace(newPlace);
+  }
+
+  const remove = removePlace => {
+    api.delete(`places/${place.id}`).then(_ => {
+      const list = getUpdatedList(removePlace, false);
+      setPlaces(list);
+    });
+  }
+
+  const getUpdatedList = (place, add = true) => {
+    const list = places.filter(u => u.id !== place.id);
+    if (add) list.unshift(place);
+    return list;
+  }
+
+  const handleTextFieldChange = event => {
     const { value, name } = event.target
     setPlace({ ...place, [name]: value })
   }
 
-  const clear = () => {
-    setPlace({ name: '' })
+  const clearTextField = () => {
+    setPlace({ id: 0, name: '' })
   }
 
   const handleSearch = event => {
     setSearchInput(event.target.value)
   }
 
-  const getUpdatedList = (student, add = true) => {
-    const list = places.filter(u => u.id !== student.id);
-    if (add) list.unshift(student);
-    return list;
-  }
-
-  const editPlace = place => {
-    console.log('Edit Place');
-  }
-
-  const removePlace = place => {
-    api.delete(`places/${place.id}`).then(response => {
-      const list = getUpdatedList(place, false);
-      setPlaces(list);
-    });
-  }
-
   const renderRows = () => {
     const filteredPlaces = places.filter(place =>
-      place.name.toLowerCase()
-        .includes(searchInput.toLowerCase())
+      place.name.toLowerCase().includes(searchInput.toLowerCase())
     );
 
     return filteredPlaces.map(place => {
@@ -77,13 +92,13 @@ const Places = () => {
           <td>
             <Button
               background='yellow'
-              onClick={() => editPlace(place)}
+              onClick={() => edit(place)}
             >
               <FaPencilAlt />
             </Button>
             <Button
               background='red'
-              onClick={() => removePlace(place)}
+              onClick={() => remove(place)}
             >
               <FaTrash />
             </Button>
@@ -97,26 +112,27 @@ const Places = () => {
 
   return (
     <Main {...headerProps}>
-      <FormContainer>
+      <FormContainer action="submit">
         <Input
           type="text"
           name="name"
           label="Nome"
           value={place.name}
-          handleChange={e => handleChange(e)}
+          handleChange={e => handleTextFieldChange(e)}
           required
         />
         <ButtonsGroup>
           <ButtonsContainer>
             <Button
               background='blue'
-            // onClick={e => this.save(e)}
+              onClick={save}
+              type='submit'
             >
               Salvar
           </Button>
             <Button
               background='grey'
-              onClick={clear}
+              onClick={clearTextField}
             >
               Cancelar
           </Button>
