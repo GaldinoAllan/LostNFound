@@ -9,7 +9,10 @@ import {
   FormContainer,
   ButtonsGroup,
   ButtonsContainer,
-  SearchContainer
+  SearchContainer,
+  TableContainer,
+  Table,
+  Actions
 } from '../styles/pages/Places'
 
 import api from '../server/api'
@@ -43,12 +46,21 @@ const Places = () => {
     setSearchInput(event.target.value)
   }
 
-  const editPlace = () => {
+  const getUpdatedList = (student, add = true) => {
+    const list = places.filter(u => u.id !== student.id);
+    if (add) list.unshift(student);
+    return list;
+  }
+
+  const editPlace = place => {
     console.log('Edit Place');
   }
 
-  const removePlace = () => {
-    console.log('Delete Place');
+  const removePlace = place => {
+    api.delete(`places/${place.id}`).then(response => {
+      const list = getUpdatedList(place, false);
+      setPlaces(list);
+    });
   }
 
   const renderRows = () => {
@@ -63,9 +75,6 @@ const Places = () => {
           <td>{place.id}</td>
           <td>{place.name}</td>
           <td>
-            <button className="btn btn-warning" onClick={() => editPlace(place)}>
-              <i className="fa fa-pencil"></i>
-            </button>
             <Button
               background='yellow'
               onClick={() => editPlace(place)}
@@ -129,16 +138,18 @@ const Places = () => {
           required
         />
       </SearchContainer>
-      <table className="table mt-4">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
+      <TableContainer>
+        <Table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <Actions>Ações</Actions>
+            </tr>
+          </thead>
+          <tbody>{rows}</tbody>
+        </Table>
+      </TableContainer>
     </Main>
   );
 }
