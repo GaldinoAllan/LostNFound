@@ -1,14 +1,16 @@
 import styled from 'styled-components'
 
 export const Content = styled.header`
+  height: 120px;
   background-color: #563887;
   display: flex;
   align-items: flex-end;
   justify-content: center;
 `
 export const Container = styled.div`
-  width: 95%;
-  height: 90%;
+  margin: 16px;
+  flex: 1;
+  height: 90px;
   background-color: #FFF;
   padding: 0px 15px;
   overflow: hidden;

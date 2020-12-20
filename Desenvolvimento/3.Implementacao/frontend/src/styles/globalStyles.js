@@ -10,10 +10,10 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  /* background: #98C7FF; */
   background: url(${bgImg}) no-repeat top;
   -webkit-font-smoothing: antialiased;
   height: 100%;
+  margin-bottom: 120px;
 }
 
 body, input, button, textarea {
@@ -37,8 +37,7 @@ a, button{
   grid-template-areas: 
     "logo header"
     "menu content";
-    /* "menu footer"; */
-  height: 100vh;
+  /* height: 100vh; */
   background-color: #F5F5F5;
 }
 
@@ -57,10 +56,6 @@ aside.menu-area {
 main.content {
   grid-area: content;
 }
-
-/* footer.footer {
-    grid-area: footer;
-} */
 
 @media(max-width: 768px) {
   .editor {

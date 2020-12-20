@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const HeaderContainer = styled.div`
-  height: 120px;
+  /* height: 120px; */
+  height: 60px;
   width: 100%;
   display: flex;
   justify-content: left;
@@ -20,7 +21,8 @@ export const Title = styled(Link)`
   text-decoration: none;
   color: #5C5C5C;
   font-family: Michroma, sans-serif;
-  font-size: 30px;
+  font-size: 24px;
+  /* font-size: 30px; */
   
   @media screen and (max-width: 800px) {
     font-size: 20px;

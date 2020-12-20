@@ -8,10 +8,11 @@ export const LandingContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  padding-bottom: 50px;
+  margin-bottom: 150px;
 
   @media screen and (max-width: 800px){
     margin: 8px 8px 16px;
+    margin-bottom: 360px;
   }
 `
 

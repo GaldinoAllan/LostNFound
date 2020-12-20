@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 
-export const FooterContainer = styled.div`
-  height: 150px;
+export const FooterContainer = styled.footer`
+position: fixed;
+  height: 120px;
+  display: flex;
   bottom: 0px;
   left: 0px;
   right: 0px;
-  margin-bottom: 0px;
   background-color: #FCFCFC;
+  /* background-color: black; */
 
   display: flex;
   align-items: center;
@@ -31,7 +33,7 @@ export const FooterContent = styled.div`
   
   @media screen and (max-width: 800px) {
     grid-gap: 50px;
-   grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr; 
   }
 `
 

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   FooterContainer,
@@ -8,7 +8,7 @@ import {
 } from '../styles/components/Footer'
 
 const Footer = () => {
-  const [userLogged, setUserLogged] = useState(true)
+  // const [userLogged, setUserLogged] = useState(true)
 
   return (
     <FooterContainer>
@@ -29,7 +29,21 @@ const Footer = () => {
           <p>salto@ifsp.edu.br</p>
           <p>(11) 4602-9191</p>
         </ColumnCenter>
-        {
+        <Column>
+          <h3><Link to="/editor">Página do Editor</Link></h3>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+            <div>
+              <p><Link to="/editor/locais">Locais</Link></p>
+              <p><Link to="/editor/cargos">Cargos</Link></p>
+              <p><Link to="/editor/categorias">Categorias</Link></p>
+            </div>
+            <div>
+              <p><Link to="/editor/usuarios">Usuários</Link></p>
+              <p><Link to="/editor">Itens</Link></p>
+            </div>
+          </div>
+        </Column>
+        {/* {
           userLogged
             ? (
               <Column>
@@ -52,7 +66,7 @@ const Footer = () => {
                 <h3><Link to="/login">Login</Link></h3>
               </ColumnCenter>
             )
-        }
+        } */}
       </FooterContent>
     </FooterContainer >
   )
