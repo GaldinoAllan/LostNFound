@@ -13,7 +13,7 @@ import {
   TableContainer,
   Table,
   Actions
-} from '../styles/pages/Places'
+} from '../styles/pages/Editor'
 
 import api from '../server/api'
 
