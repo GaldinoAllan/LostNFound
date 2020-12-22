@@ -4,6 +4,20 @@ export const FormContainer = styled.div`
   margin: 36px;
 `
 
+export const Row = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+`
+
+export const RowColumn = styled.div`
+  align-self: center;
+
+  select option{
+    color: #f00;
+  }
+`
+
 export const ButtonsGroup = styled.div`
   width: 100%;
   display: flex;
@@ -19,6 +33,13 @@ export const ButtonsContainer = styled.div`
 `
 
 export const SearchContainer = styled.div`
+  margin: 36px;
+`
+
+export const ThreeSearchContainers = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 24px;
   margin: 36px;
 `
 

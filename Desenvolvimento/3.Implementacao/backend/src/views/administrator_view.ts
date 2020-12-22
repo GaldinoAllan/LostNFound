@@ -6,12 +6,14 @@ export default {
     id,
     name,
     email,
+    password,
     position_id,
   }: Administrator) {
     return {
       id,
       name,
       email,
+      password,
       position_id,
     };
   },

@@ -7,7 +7,7 @@ import FoundObject from '../components/FoundObject'
 import Spinner from '../components/Spinner'
 import SearchInput from '../components/SearchInput'
 
-import getById from '../utils/getById';
+import { getById } from '../utils/getById';
 
 import api from '../server/api'
 

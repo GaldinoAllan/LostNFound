@@ -54,7 +54,7 @@ const Categories = () => {
   }
 
   const remove = removeCategory => {
-    api.delete(`categories/${category.id}`).then(_ => {
+    api.delete(`categories/${removeCategory.id}`).then(_ => {
       const list = getUpdatedList(removeCategory, false);
       setCategories(list);
     });

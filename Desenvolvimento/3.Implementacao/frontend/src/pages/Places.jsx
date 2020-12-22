@@ -54,7 +54,7 @@ const Places = () => {
   }
 
   const remove = removePlace => {
-    api.delete(`places/${place.id}`).then(_ => {
+    api.delete(`places/${removePlace.id}`).then(_ => {
       const list = getUpdatedList(removePlace, false);
       setPlaces(list);
     });
