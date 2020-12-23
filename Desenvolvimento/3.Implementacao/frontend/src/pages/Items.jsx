@@ -72,18 +72,18 @@ const Items = () => {
   }, [])
 
   const save = async () => {
+    const data = new FormData()
+    data.append('name', item.name)
+    data.append('date', item.date)
+    data.append('description', item.description)
+    data.append('category_id', item.category_id)
+    data.append('place_id', item.place_id)
+
+    images.forEach(image => {
+      data.append('images', image)
+    })
+
     if (!item.id) {
-      const data = new FormData()
-      data.append('name', item.name)
-      data.append('date', item.date)
-      data.append('description', item.description)
-      data.append('category_id', item.category_id)
-      data.append('place_id', item.place_id)
-
-      images.forEach(image => {
-        data.append('images', image)
-      })
-
       await api.post('items', data).then(response => {
         const list = getUpdatedList(response.data)
         setItems(list)
@@ -223,7 +223,6 @@ const Items = () => {
             <Input
               type="date"
               name="date"
-              // label="Data"
               value={item.date}
               handleChange={e => handleTextFieldChange(e)}
               required
@@ -300,7 +299,7 @@ const Items = () => {
               <ImagesContainer>
                 {previewImages.map(image => (
                   !image.url
-                    ? <img key={image.id} src={image} alt={item.name} />
+                    ? <img key={image} src={image} alt={item.name} />
                     : <img key={image.id} src={image.url} alt={item.name} />
                 ))}
                 <NewImageLabel htmlFor='image[]'>
