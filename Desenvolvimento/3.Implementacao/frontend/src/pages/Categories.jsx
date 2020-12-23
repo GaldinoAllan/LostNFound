@@ -4,6 +4,7 @@ import { FaPencilAlt, FaSearch, FaTrash } from 'react-icons/fa'
 import Main from '../components/EditorMain'
 import Input from '../components/FormInput'
 import Button from '../components/Button'
+import Spinner from '../components/Spinner'
 
 import {
   FormContainer,
@@ -26,11 +27,14 @@ const Categories = () => {
   const [categories, setCategories] = useState([])
   const [category, setCategory] = useState({ id: 0, name: '' })
   const [searchInput, setSearchInput] = useState('')
+  const [pageLoading, setPageLoading] = useState(true)
 
   useEffect(() => {
     api.get('categories').then(response => {
       setCategories(response.data)
     })
+
+    setPageLoading(false)
   }, [])
 
   const save = async () => {
@@ -154,18 +158,24 @@ const Categories = () => {
           required
         />
       </SearchContainer>
-      <TableContainer>
-        <Table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <Actions>Ações</Actions>
-            </tr>
-          </thead>
-          <tbody>{rows}</tbody>
-        </Table>
-      </TableContainer>
+      {
+        pageLoading
+          ? <Spinner />
+          : <>
+            <TableContainer>
+              <Table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <Actions>Ações</Actions>
+                  </tr>
+                </thead>
+                <tbody>{rows}</tbody>
+              </Table>
+            </TableContainer>
+          </>
+      }
     </Main>
   );
 }

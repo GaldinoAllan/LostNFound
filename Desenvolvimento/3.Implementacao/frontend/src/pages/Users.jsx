@@ -6,6 +6,7 @@ import Select from '@material-ui/core/Select'
 import Main from '../components/EditorMain'
 import Input from '../components/FormInput'
 import Button from '../components/Button'
+import Spinner from '../components/Spinner'
 
 import { getById, getByIdString } from '../utils/getById'
 
@@ -43,6 +44,8 @@ const Users = () => {
   const [searchInputByName, setSearchInputByName] = useState('')
   const [searchInputByEmail, setSearchInputByEmail] = useState('')
   const [searchInputByPosition, setSearchInputByPosition] = useState('')
+  const [pageLoading, setPageLoading] = useState(true)
+
 
   useEffect(() => {
     api.get('administrators').then(response => {
@@ -51,6 +54,8 @@ const Users = () => {
     api.get('positions').then(response => {
       setPositions(response.data)
     })
+
+    setPageLoading(false)
   }, [])
 
   const save = async () => {
@@ -275,20 +280,26 @@ const Users = () => {
           />
         </RowColumn>
       </ThreeSearchContainers>
-      <TableContainer>
-        <Table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Email</th>
-              <th>Cargo</th>
-              <Actions>Ações</Actions>
-            </tr>
-          </thead>
-          <tbody>{rows}</tbody>
-        </Table>
-      </TableContainer>
+      {
+        pageLoading
+          ? <Spinner />
+          : <>
+            <TableContainer>
+              <Table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Cargo</th>
+                    <Actions>Ações</Actions>
+                  </tr>
+                </thead>
+                <tbody>{rows}</tbody>
+              </Table>
+            </TableContainer>
+          </>
+      }
     </Main>
   );
 }
