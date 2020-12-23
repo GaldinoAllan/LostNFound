@@ -2,25 +2,32 @@ import { useState, useEffect } from 'react'
 import { FaPencilAlt, FaSearch, FaTrash } from 'react-icons/fa'
 import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
+import { FaPlus } from 'react-icons/fa'
 
 import Main from '../components/EditorMain'
 import Input from '../components/FormInput'
 import Button from '../components/Button'
 import Spinner from '../components/Spinner'
 
-import { getByIdString } from '../utils/getById'
+import { getById, getByIdString } from '../utils/getById'
 
 import {
   FormContainer,
-  Row,
+  RowTwoColumnsItem,
+  RowThreeColumns,
   RowColumn,
+  ImageInputBlock,
+  ImageLabel,
+  ImagesContainer,
+  NewImageLabel,
+  ImageInput,
   ButtonsGroup,
   ButtonsContainer,
   ThreeSearchContainers,
   TableContainer,
   Table,
   Actions
-} from '../styles/pages/Editor'
+} from '../styles/pages/Items'
 
 import api from '../server/api'
 
@@ -29,13 +36,15 @@ const headerProps = {
   subtitle: 'Listagem e edição de todos os itens',
 };
 
-// const itemInitialState = {
-//   id: 0,
-//   name: '',
-//   email: '',
-//   password: '',
-//   position_id: '',
-// }
+const itemInitialState = {
+  id: 0,
+  name: '',
+  date: '',
+  description: '',
+  category_id: '',
+  place_id: '',
+  images: [],
+}
 
 const Items = () => {
   const [items, setItems] = useState([])
@@ -44,8 +53,10 @@ const Items = () => {
   const [searchInputByName, setSearchInputByName] = useState('')
   const [searchInputByCategory, setSearchInputByCategory] = useState('')
   const [searchInputByPlace, setSearchInputByPlace] = useState('')
-  // const [item, setItem] = useState(itemInitialState)
+  const [item, setItem] = useState(itemInitialState)
   const [pageLoading, setPageLoading] = useState(true)
+  const [previewImages, setPreviewImages] = useState([])
+  const [images, setImages] = useState([])
 
   useEffect(() => {
     api.get('items').then(response => {
@@ -62,21 +73,39 @@ const Items = () => {
     setPageLoading(false)
   }, [])
 
-  // const save = async () => {
-  //   if (!item.id) {
-  //     await api.post('items', item).then(response => {
-  //       const list = getUpdatedList(response.data);
-  //       setItems(list)
-  //       setItem(itemInitialState)
-  //     });
-  //   } else {
-  //     await api.put(`items/${item.id}`, item).then(_ => {
-  //       const list = getUpdatedList(item, true);
-  //       setItem(itemInitialState)
-  //       setItems(list)
-  //     });
-  //   }
-  // }
+  const save = async () => {
+    console.log("saving")
+
+    if (!item.id) {
+      const data = new FormData()
+      data.append('name', item.name)
+      data.append('date', item.date)
+      data.append('description', item.description)
+      data.append('category_id', item.category_id)
+      data.append('place_id', item.place_id)
+
+      images.forEach(image => {
+        data.append('images', image)
+      })
+
+      console.log(data);
+
+      await api.post('items', data).then(response => {
+        const list = getUpdatedList(response.data)
+        setItems(list)
+        setItem(itemInitialState)
+      })
+
+      alert('Cadastro realizado com sucesso!')
+    } else {
+      await api.put(`items/${item.id}`, item).then(_ => {
+        const list = getUpdatedList(item, true)
+        setItem(itemInitialState)
+        setItems(list)
+        alert('Alteração realizada com sucesso!')
+      })
+    }
+  }
 
   const edit = newItem => {
     console.log(newItem);
@@ -96,14 +125,14 @@ const Items = () => {
     return list;
   }
 
-  // const handleTextFieldChange = event => {
-  //   const { value, name } = event.target
-  //   setItem({ ...item, [name]: value })
-  // }
+  const handleTextFieldChange = event => {
+    const { value, name } = event.target
+    setItem({ ...item, [name]: value })
+  }
 
-  // const clearTextField = () => {
-  //   setItem(itemInitialState)
-  // }
+  const clearTextField = () => {
+    setItem(itemInitialState)
+  }
 
   const handleSearch = (event, method) => {
     if (method === 'name') {
@@ -113,6 +142,22 @@ const Items = () => {
     } else {
       setSearchInputByPlace(event.target.value)
     }
+  }
+
+  const handleSelectImage = (event) => {
+    if (!event.target.files) {
+      return;
+    }
+    const selectedImages = Array.from(event.target.files);
+
+    setImages(selectedImages);
+    // setItem({ ...item, images: selectedImages })
+
+    const selectedImagesPreview = selectedImages.map(image => {
+      return URL.createObjectURL(image);
+    });
+
+    setPreviewImages(selectedImagesPreview);
   }
 
   const renderRows = () => {
@@ -162,67 +207,114 @@ const Items = () => {
 
   return (
     <Main {...headerProps}>
-      {/* <FormContainer action="submit">
-        <Row>
+      <FormContainer action="submit">
+        <Input
+          type="text"
+          name="name"
+          label="Nome"
+          value={item.name}
+          handleChange={e => handleTextFieldChange(e)}
+          required
+        />
+        <RowThreeColumns>
           <RowColumn>
             <Input
-              type="text"
-              name="name"
-              label="Nome"
-              value={item.name}
+              type="date"
+              name="date"
+              // label="Data"
+              value={item.date}
               handleChange={e => handleTextFieldChange(e)}
               required
             />
           </RowColumn>
           <RowColumn>
-            <Input
-              type="email"
-              name="email"
-              label="Email"
-              value={item.email}
-              handleChange={e => handleTextFieldChange(e)}
-              required
-            />
-          </RowColumn>
-        </Row>
-        <Row>
-          <RowColumn>
-            <InputLabel htmlFor="position_id">Cargo</InputLabel>
+            <InputLabel htmlFor="category_id">Categoria</InputLabel>
             <Select
               native
               style={{ width: '100%', marginBottom: 5 }}
-              value={getById(item.position_id, positions)}
+              value={getById(item.category_id, categories)}
               onChange={e => handleTextFieldChange(e)}
               inputProps={{
-                name: 'position_id',
-                id: 'position_id',
+                name: 'category_id',
+                id: 'category_id',
               }}
             >
-              <option value={item.position_id}>
+              <option value={item.category_id}>
                 {
-                  getById(item.position_id, positions)
+                  getById(item.category_id, categories)
                 }
               </option>
-              {positions.map(position => {
+              {categories.map(category => {
                 return <option
-                  key={position.id}
-                  value={position.id}>
-                  {position.name}
+                  key={category.id}
+                  value={category.id}>
+                  {category.name}
                 </option>
               })}
             </Select>
           </RowColumn>
           <RowColumn>
+            <InputLabel htmlFor="category_id">Local</InputLabel>
+            <Select
+              native
+              style={{ width: '100%', marginBottom: 5 }}
+              value={getById(item.place_id, places)}
+              onChange={e => handleTextFieldChange(e)}
+              inputProps={{
+                name: 'place_id',
+                id: 'place_id',
+              }}
+            >
+              <option value={item.place_id}>
+                {
+                  getById(item.place_id, places)
+                }
+              </option>
+              {places.map(place => {
+                return <option
+                  key={place.id}
+                  value={place.id}>
+                  {place.name}
+                </option>
+              })}
+            </Select>
+          </RowColumn>
+        </RowThreeColumns>
+        <RowTwoColumnsItem>
+          <RowColumn>
             <Input
-              type="password"
-              name="password"
-              label="Senha"
-              value={item.password}
+              type="text"
+              name="description"
+              label="Descrição"
+              value={item.description}
               handleChange={e => handleTextFieldChange(e)}
               required
             />
           </RowColumn>
-        </Row>
+          <RowColumn>
+            <ImageInputBlock>
+              <ImageLabel htmlFor="images">Fotos</ImageLabel>
+
+              <ImagesContainer>
+                {previewImages.map(image => {
+                  return (
+                    <img key={image} src={image} alt={item.name} />
+                  )
+                })}
+                <NewImageLabel htmlFor='image[]'>
+                  <FaPlus size={24} color="#563887" />
+                </NewImageLabel>
+              </ImagesContainer>
+
+              <ImageInput
+                multiple
+                onChange={handleSelectImage}
+                type="file"
+                id="image[]"
+              />
+            </ImageInputBlock>
+          </RowColumn>
+        </RowTwoColumnsItem>
         <ButtonsGroup>
           <ButtonsContainer>
             <Button
@@ -240,7 +332,7 @@ const Items = () => {
           </Button>
           </ButtonsContainer>
         </ButtonsGroup>
-      </FormContainer> */}
+      </FormContainer>
       <ThreeSearchContainers>
         <RowColumn>
           <Input
@@ -310,7 +402,7 @@ const Items = () => {
             </TableContainer>
           </>
       }
-    </Main>
+    </Main >
   );
 }
 

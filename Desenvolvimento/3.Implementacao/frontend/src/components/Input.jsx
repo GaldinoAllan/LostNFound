@@ -6,7 +6,7 @@ import {
   FormInputLabel,
 } from '../styles/components/Input';
 
-const FormInput = ({ handleChange, label, ...props }) => (
+const FormInput = ({ handleChange, label, labelFixed, ...props }) => (
   <GroupContainer>
     <FormInputContainer onChange={handleChange} {...props} />
     {
