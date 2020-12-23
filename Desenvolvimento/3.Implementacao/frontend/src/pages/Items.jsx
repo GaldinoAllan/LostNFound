@@ -43,7 +43,6 @@ const itemInitialState = {
   description: '',
   category_id: '',
   place_id: '',
-  images: [],
 }
 
 const Items = () => {
@@ -60,7 +59,6 @@ const Items = () => {
 
   useEffect(() => {
     api.get('items').then(response => {
-      console.log(response.data);
       setItems(response.data)
     })
     api.get('places').then(response => {
@@ -74,8 +72,6 @@ const Items = () => {
   }, [])
 
   const save = async () => {
-    console.log("saving")
-
     if (!item.id) {
       const data = new FormData()
       data.append('name', item.name)
@@ -88,12 +84,12 @@ const Items = () => {
         data.append('images', image)
       })
 
-      console.log(data);
-
       await api.post('items', data).then(response => {
         const list = getUpdatedList(response.data)
         setItems(list)
         setItem(itemInitialState)
+        setImages([])
+        setPreviewImages([])
       })
 
       alert('Cadastro realizado com sucesso!')
@@ -102,14 +98,19 @@ const Items = () => {
         const list = getUpdatedList(item, true)
         setItem(itemInitialState)
         setItems(list)
-        alert('Alteração realizada com sucesso!')
+        setImages([])
+        setPreviewImages([])
       })
+
+      alert('Alteração realizada com sucesso!')
     }
   }
 
   const edit = newItem => {
     console.log(newItem);
-    // setItem(newItem);
+    setItem(newItem);
+    setImages(newItem.images)
+    setPreviewImages(newItem.images)
   }
 
   const remove = removeItem => {
@@ -132,6 +133,8 @@ const Items = () => {
 
   const clearTextField = () => {
     setItem(itemInitialState)
+    setImages([])
+    setPreviewImages([])
   }
 
   const handleSearch = (event, method) => {
@@ -151,7 +154,6 @@ const Items = () => {
     const selectedImages = Array.from(event.target.files);
 
     setImages(selectedImages);
-    // setItem({ ...item, images: selectedImages })
 
     const selectedImagesPreview = selectedImages.map(image => {
       return URL.createObjectURL(image);
@@ -296,11 +298,11 @@ const Items = () => {
               <ImageLabel htmlFor="images">Fotos</ImageLabel>
 
               <ImagesContainer>
-                {previewImages.map(image => {
-                  return (
-                    <img key={image} src={image} alt={item.name} />
-                  )
-                })}
+                {previewImages.map(image => (
+                  !image.url
+                    ? <img key={image.id} src={image} alt={item.name} />
+                    : <img key={image.id} src={image.url} alt={item.name} />
+                ))}
                 <NewImageLabel htmlFor='image[]'>
                   <FaPlus size={24} color="#563887" />
                 </NewImageLabel>

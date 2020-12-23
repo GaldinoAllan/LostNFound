@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { FaRegQuestionCircle, FaPlus } from 'react-icons/fa'
 import Paginator from 'react-hooks-paginator'
 
@@ -24,6 +25,8 @@ import {
 import Button from '../components/Button'
 
 const Landing = () => {
+  const history = useHistory();
+
   const pageLimit = 8
 
   const [offset, setOffset] = useState(0);
@@ -34,11 +37,10 @@ const Landing = () => {
   const [places, setPlaces] = useState([])
   const [currentData, setCurrentData] = useState([])
   const [pageLoading, setPageLoading] = useState(true)
-  // const [search, setSearch] = useState('')
+  const [searchString, setSearchString] = useState('')
 
   useEffect(() => {
     api.get('items').then(response => {
-      console.log(response.data);
       setItems(response.data)
     })
     api.get('places').then(response => {
@@ -52,20 +54,23 @@ const Landing = () => {
   }, [])
 
   useEffect(() => {
-    setCurrentData(items.slice(offset, offset + pageLimit));
-  }, [offset, items]);
+    const filteredItems = items.filter(item =>
+      item.name.toLowerCase().includes(searchString.toLowerCase())
+    )
+
+    setCurrentData(filteredItems.slice(offset, offset + pageLimit));
+  }, [offset, items, searchString]);
 
   const handleOpenModal = () => {
     setModalIsOpen(!modalIsOpen)
   }
 
   const handleAddItem = () => {
-    console.log('Add Item function called');
+    history.push('/editor')
   }
 
   const handleSearch = e => {
-    console.log(`${e.target.value}`);
-    // setSearch(value)
+    setSearchString(e.target.value)
   };
 
   return (
