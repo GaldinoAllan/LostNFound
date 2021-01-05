@@ -1,5 +1,5 @@
-import Button from './Button'
-import { FaEdit, FaTrash } from 'react-icons/fa'
+// import Button from './Button'
+// import { FaEdit, FaTrash } from 'react-icons/fa'
 
 import {
   FoundObj,
@@ -10,7 +10,7 @@ import {
   DescriptionItem,
   DescriptionTitle,
   DescriptionText,
-  Buttons
+  // Buttons
 } from '../styles/components/FoundObject'
 
 const FoundObject = ({
@@ -22,13 +22,13 @@ const FoundObject = ({
   date,
   description
 }) => {
-  const handleDelete = () => {
-    console.log(`Delete function called for object ${id}`);
-  }
+  // const handleDelete = () => {
+  //   console.log(`Delete function called for object ${id}`);
+  // }
 
-  const handleUpdate = () => {
-    console.log(`Update function called for object ${id}`);
-  }
+  // const handleUpdate = () => {
+  //   console.log(`Update function called for object ${id}`);
+  // }
 
   return (
     <FoundObj>
@@ -63,7 +63,7 @@ const FoundObject = ({
           </DescriptionItem>
         </DescriptionContainer>
       </Container>
-      <Buttons>
+      {/* <Buttons>
         <Button
           background="red"
           onClick={handleDelete}
@@ -82,7 +82,7 @@ const FoundObject = ({
         >
           Editar
       </Button>
-      </Buttons>
+      </Buttons> */}
     </FoundObj>
   )
 }

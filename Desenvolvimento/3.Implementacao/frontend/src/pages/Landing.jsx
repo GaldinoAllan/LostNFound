@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 import { FaRegQuestionCircle, FaPlus } from 'react-icons/fa'
 import Paginator from 'react-hooks-paginator'
 
@@ -19,13 +19,14 @@ import {
   Info,
   LandingHeader,
   Content,
-  ButtonContent,
-  ButtonContainer
+  // ButtonContent,
+  // ButtonContainer
 } from '../styles/pages/Landing'
-import Button from '../components/Button'
+
+// import Button from '../components/Button'
 
 const Landing = () => {
-  const history = useHistory();
+  // const history = useHistory();
 
   const pageLimit = 8
 
@@ -65,9 +66,9 @@ const Landing = () => {
     setModalIsOpen(!modalIsOpen)
   }
 
-  const handleAddItem = () => {
-    history.push('/editor')
-  }
+  // const handleAddItem = () => {
+  //   history.push('/editor')
+  // }
 
   const handleSearch = e => {
     setSearchString(e.target.value)
@@ -126,7 +127,7 @@ const Landing = () => {
             />
           </>
       }
-      <ButtonContainer>
+      {/* <ButtonContainer>
         <ButtonContent>
           <Button
             background='green'
@@ -136,7 +137,7 @@ const Landing = () => {
             Adicionar Item
           </Button>
         </ButtonContent>
-      </ButtonContainer>
+      </ButtonContainer> */}
     </LandingContainer>
   )
 }
