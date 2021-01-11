@@ -6,6 +6,8 @@ import Input from '../components/FormInput'
 import Button from '../components/Button'
 import Spinner from '../components/Spinner'
 
+import { useAuth } from '../hooks/auth'
+
 import {
   FormContainer,
   ButtonsGroup,
@@ -24,28 +26,42 @@ const headerProps = {
 };
 
 const Categories = () => {
+  const { token } = useAuth()
+
   const [categories, setCategories] = useState([])
   const [category, setCategory] = useState({ id: 0, name: '' })
   const [searchInput, setSearchInput] = useState('')
   const [pageLoading, setPageLoading] = useState(true)
 
   useEffect(() => {
-    api.get('categories').then(response => {
+    api.get('categories', {
+      headers: {
+        'authorization': `Bearer ${token}`
+      }
+    }).then(response => {
       setCategories(response.data)
     })
 
     setPageLoading(false)
-  }, [])
+  }, [token])
 
   const save = async () => {
     if (!category.id) {
-      await api.post('categories', category).then(response => {
+      await api.post('categories', category, {
+        headers: {
+          'authorization': `Bearer ${token}`
+        }
+      }).then(response => {
         const list = getUpdatedList(response.data);
         setCategories(list)
         setCategory({ id: 0, name: '' })
       });
     } else {
-      await api.put(`categories/${category.id}`, category).then(_ => {
+      await api.put(`categories/${category.id}`, category, {
+        headers: {
+          'authorization': `Bearer ${token}`
+        }
+      }).then(_ => {
         const list = getUpdatedList(category, true);
         setCategory({ id: 0, name: '' })
         setCategories(list)
@@ -58,7 +74,11 @@ const Categories = () => {
   }
 
   const remove = removeCategory => {
-    api.delete(`categories/${removeCategory.id}`).then(_ => {
+    api.delete(`categories/${removeCategory.id}`, {
+      headers: {
+        'authorization': `Bearer ${token}`
+      }
+    }).then(_ => {
       const list = getUpdatedList(removeCategory, false);
       setCategories(list);
     });

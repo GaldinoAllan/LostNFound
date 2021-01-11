@@ -8,6 +8,8 @@ import Input from '../components/FormInput'
 import Button from '../components/Button'
 import Spinner from '../components/Spinner'
 
+import { useAuth } from '../hooks/auth'
+
 import { getById, getByIdString } from '../utils/getById'
 
 import {
@@ -38,6 +40,8 @@ const userInitialState = {
 }
 
 const Users = () => {
+  const { token } = useAuth()
+
   const [users, setUsers] = useState([])
   const [positions, setPositions] = useState([])
   const [user, setUser] = useState(userInitialState)
@@ -48,25 +52,41 @@ const Users = () => {
 
 
   useEffect(() => {
-    api.get('administrators').then(response => {
+    api.get('administrators', {
+      headers: {
+        'authorization': `Bearer ${token}`
+      }
+    }).then(response => {
       setUsers(response.data)
     })
-    api.get('positions').then(response => {
+    api.get('positions', {
+      headers: {
+        'authorization': `Bearer ${token}`
+      }
+    }).then(response => {
       setPositions(response.data)
     })
 
     setPageLoading(false)
-  }, [])
+  }, [token])
 
   const save = async () => {
     if (!user.id) {
-      await api.post('administrators', user).then(response => {
+      await api.post('administrators', user, {
+        headers: {
+          'authorization': `Bearer ${token}`
+        }
+      }).then(response => {
         const list = getUpdatedList(response.data);
         setUsers(list)
         setUser(userInitialState)
       });
     } else {
-      await api.put(`administrators/${user.id}`, user).then(_ => {
+      await api.put(`administrators/${user.id}`, user, {
+        headers: {
+          'authorization': `Bearer ${token}`
+        }
+      }).then(_ => {
         const list = getUpdatedList(user, true);
         setUser(userInitialState)
         setUsers(list)
@@ -79,7 +99,11 @@ const Users = () => {
   }
 
   const remove = removeUser => {
-    api.delete(`administrators/${removeUser.id}`).then(_ => {
+    api.delete(`administrators/${removeUser.id}`, {
+      headers: {
+        'authorization': `Bearer ${token}`
+      }
+    }).then(_ => {
       const list = getUpdatedList(removeUser, false);
       setUsers(list);
     });

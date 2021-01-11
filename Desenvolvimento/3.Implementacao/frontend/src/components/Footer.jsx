@@ -1,5 +1,6 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
+
+import { useAuth } from '../hooks/auth'
 
 import {
   FooterContainer,
@@ -9,7 +10,7 @@ import {
 } from '../styles/components/Footer'
 
 const Footer = () => {
-  const [userLogged, setUserLogged] = useState(true)
+  const { user } = useAuth()
 
   return (
     <FooterContainer>
@@ -31,7 +32,7 @@ const Footer = () => {
           <p>(11) 4602-9191</p>
         </ColumnCenter>
         {
-          userLogged
+          !!user
             ? (
               <Column>
                 <h3><Link to="/editor">Página do Editor</Link></h3>

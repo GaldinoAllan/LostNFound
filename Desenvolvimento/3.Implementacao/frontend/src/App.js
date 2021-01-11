@@ -5,15 +5,17 @@ import AppRoutes from './routes/App.routes'
 
 import GlobalStyle from './styles/globalStyles'
 
-function App() {
-  return (
-    <>
-      <GlobalStyle />
+import { AuthProvider } from './hooks/auth'
+
+const App = () => (
+  <>
+    <AuthProvider>
       <Header />
       <AppRoutes />
       <Footer />
-    </>
-  )
-}
+    </AuthProvider>
+    <GlobalStyle />
+  </>
+)
 
 export default App

@@ -9,6 +9,8 @@ import Input from '../components/FormInput'
 import Button from '../components/Button'
 import Spinner from '../components/Spinner'
 
+import { useAuth } from '../hooks/auth'
+
 import { getById, getByIdString } from '../utils/getById'
 
 import {
@@ -46,6 +48,8 @@ const itemInitialState = {
 }
 
 const Items = () => {
+  const { token } = useAuth()
+
   const [items, setItems] = useState([])
   const [categories, setCategories] = useState([])
   const [places, setPlaces] = useState([])
@@ -58,18 +62,30 @@ const Items = () => {
   const [images, setImages] = useState([])
 
   useEffect(() => {
-    api.get('items').then(response => {
+    api.get('items', {
+      headers: {
+        'authorization': `Bearer ${token}`
+      }
+    }).then(response => {
       setItems(response.data)
     })
-    api.get('places').then(response => {
+    api.get('places', {
+      headers: {
+        'authorization': `Bearer ${token}`
+      }
+    }).then(response => {
       setPlaces(response.data)
     });
-    api.get('categories').then(response => {
+    api.get('categories', {
+      headers: {
+        'authorization': `Bearer ${token}`
+      }
+    }).then(response => {
       setCategories(response.data)
     });
 
     setPageLoading(false)
-  }, [])
+  }, [token])
 
   const save = async () => {
     const data = new FormData()
@@ -84,7 +100,11 @@ const Items = () => {
     })
 
     if (!item.id) {
-      await api.post('items', data).then(response => {
+      await api.post('items', data, {
+        headers: {
+          'authorization': `Bearer ${token}`
+        }
+      }).then(response => {
         const list = getUpdatedList(response.data)
         setItems(list)
         setItem(itemInitialState)
@@ -94,7 +114,11 @@ const Items = () => {
 
       alert('Cadastro realizado com sucesso!')
     } else {
-      await api.put(`items/${item.id}`, item).then(_ => {
+      await api.put(`items/${item.id}`, item, {
+        headers: {
+          'authorization': `Bearer ${token}`
+        }
+      }).then(_ => {
         const list = getUpdatedList(item, true)
         setItem(itemInitialState)
         setItems(list)
@@ -114,7 +138,11 @@ const Items = () => {
   }
 
   const remove = removeItem => {
-    api.delete(`items/${removeItem.id}`).then(_ => {
+    api.delete(`items/${removeItem.id}`, {
+      headers: {
+        'authorization': `Bearer ${token}`
+      }
+    }).then(_ => {
       const list = getUpdatedList(removeItem, false);
       setItems(list);
     });

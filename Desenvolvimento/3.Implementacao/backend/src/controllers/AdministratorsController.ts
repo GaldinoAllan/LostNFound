@@ -1,12 +1,16 @@
 import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
 import * as Yup from 'yup'
+import { hash } from 'bcryptjs'
+
+import AppError from '../errors/AppError'
 
 import Administrator from '../models/Administrator'
 import administratorView from '../views/administrator_view'
 
 export default {
   async index(request: Request, response: Response) {
+
     const administratorsRepository = getRepository(Administrator)
 
     const administrators = await administratorsRepository.find()
@@ -23,6 +27,14 @@ export default {
     } = request.body
 
     const administratorsRepository = getRepository(Administrator)
+
+    const checkUserExists = await administratorsRepository.findOne({
+      where: { email },
+    })
+
+    if (checkUserExists) {
+      throw new AppError('Email address already in use.')
+    }
 
     const data = {
       name,
@@ -42,7 +54,16 @@ export default {
       abortEarly: false,
     })
 
-    const administrator = administratorsRepository.create(data)
+    const hashedPassword = await hash(password, 8)
+
+    const hashedPasswordData = {
+      name,
+      email,
+      password: hashedPassword,
+      position_id,
+    }
+
+    const administrator = administratorsRepository.create(hashedPasswordData)
 
     await administratorsRepository.save(administrator)
 
@@ -71,6 +92,8 @@ export default {
 
     const administratorsRepository = getRepository(Administrator)
 
+    const hashedPassword = await hash(password, 8)
+
     const newData = {
       name,
       email,
@@ -89,7 +112,14 @@ export default {
       abortEarly: false,
     })
 
-    await administratorsRepository.update(id, newData)
+    const hashedPasswordNewData = {
+      name,
+      email,
+      password: hashedPassword,
+      position_id,
+    }
+
+    await administratorsRepository.update(id, hashedPasswordNewData)
 
     return response.json({ message: `Administrator ${id} Updated` })
   }

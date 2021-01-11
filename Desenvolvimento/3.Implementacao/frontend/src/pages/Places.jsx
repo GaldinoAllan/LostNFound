@@ -6,6 +6,8 @@ import Input from '../components/FormInput'
 import Button from '../components/Button'
 import Spinner from '../components/Spinner'
 
+import { useAuth } from '../hooks/auth'
+
 import {
   FormContainer,
   ButtonsGroup,
@@ -24,28 +26,42 @@ const headerProps = {
 };
 
 const Places = () => {
+  const { token } = useAuth()
+
   const [places, setPlaces] = useState([])
   const [place, setPlace] = useState({ id: 0, name: '' })
   const [searchInput, setSearchInput] = useState('')
   const [pageLoading, setPageLoading] = useState(true)
 
   useEffect(() => {
-    api.get('places').then(response => {
+    api.get('places', {
+      headers: {
+        'authorization': `Bearer ${token}`
+      }
+    }).then(response => {
       setPlaces(response.data)
     })
 
     setPageLoading(false)
-  }, [])
+  }, [token])
 
   const save = async () => {
     if (!place.id) {
-      await api.post('places', place).then(response => {
+      await api.post('places', place, {
+        headers: {
+          'authorization': `Bearer ${token}`
+        }
+      }).then(response => {
         const list = getUpdatedList(response.data);
         setPlaces(list)
         setPlace({ id: 0, name: '' })
       });
     } else {
-      await api.put(`places/${place.id}`, place).then(_ => {
+      await api.put(`places/${place.id}`, place, {
+        headers: {
+          'authorization': `Bearer ${token}`
+        }
+      }).then(_ => {
         const list = getUpdatedList(place, true);
         setPlace({ id: 0, name: '' })
         setPlaces(list)
@@ -58,7 +74,11 @@ const Places = () => {
   }
 
   const remove = removePlace => {
-    api.delete(`places/${removePlace.id}`).then(_ => {
+    api.delete(`places/${removePlace.id}`, {
+      headers: {
+        'authorization': `Bearer ${token}`
+      }
+    }).then(_ => {
       const list = getUpdatedList(removePlace, false);
       setPlaces(list);
     });

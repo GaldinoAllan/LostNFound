@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 // import { useHistory } from 'react-router-dom'
-import { FaRegQuestionCircle, FaPlus } from 'react-icons/fa'
+import { FaRegQuestionCircle } from 'react-icons/fa'
 import Paginator from 'react-hooks-paginator'
 
 import InfoModal from '../components/InfoModal'

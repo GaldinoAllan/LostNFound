@@ -1,8 +1,12 @@
 import { useState } from 'react'
 import { FaEye } from 'react-icons/fa'
+import { useHistory } from 'react-router-dom'
+import * as Yup from 'yup'
 
 import ComputerLady from '../assets/computerLady.png'
 import Input from '../components/Input'
+
+import { useAuth } from '../hooks/auth'
 
 import {
   Container,
@@ -19,16 +23,33 @@ const Login = () => {
 
   const { email, password } = credentials;
 
+  const { signIn } = useAuth()
+
+  const history = useHistory()
+
   const handleSubmit = async event => {
     event.preventDefault();
 
-    // Place to check if user exists and login the user
-    console.log(email, password);
+    const schema = Yup.object().shape({
+      email: Yup.string()
+        .required('Email é obrigatório.')
+        .email('Digite um e-mail válido.'),
+      password: Yup.string().required('Senha obrigatória!')
+    })
+
+    await schema.validate(credentials, {
+      abortEarly: false
+    })
+
+    // Place to sign the user in
+    signIn(credentials)
 
     setCredentials({
       email: '',
       password: '',
     })
+
+    history.push('/editor')
   }
 
   const handleChange = event => {

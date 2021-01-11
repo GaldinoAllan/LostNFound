@@ -6,7 +6,7 @@ export const HeaderContainer = styled.div`
   height: 60px;
   width: 100%;
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
   padding: 0 50px;
   background: #FCFCFC;
@@ -27,4 +27,8 @@ export const Title = styled(Link)`
   @media screen and (max-width: 800px) {
     font-size: 20px;
   }
+`
+
+export const Logout = styled.p`
+  cursor: pointer
 `
