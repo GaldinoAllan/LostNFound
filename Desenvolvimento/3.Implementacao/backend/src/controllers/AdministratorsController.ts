@@ -92,35 +92,70 @@ export default {
 
     const administratorsRepository = getRepository(Administrator)
 
-    const hashedPassword = await hash(password, 8)
-
-    const newData = {
-      name,
-      email,
-      password,
-      position_id,
-    }
-
-    const schema = Yup.object().shape({
-      name: Yup.string().required(),
-      email: Yup.string().email().required(),
-      password: Yup.string().required().min(6),
-      position_id: Yup.number().required(),
-    });
-
-    await schema.validate(newData, {
-      abortEarly: false,
+    const checkUserExists = await administratorsRepository.findOne({
+      where: { id },
     })
 
-    const hashedPasswordNewData = {
-      name,
-      email,
-      password: hashedPassword,
-      position_id,
+    if (!checkUserExists) {
+      throw new AppError('User does not exist!')
     }
 
-    await administratorsRepository.update(id, hashedPasswordNewData)
+    if (password == '') {
+      const currentPassword = checkUserExists.password
 
-    return response.json({ message: `Administrator ${id} Updated` })
+      const newData = {
+        name,
+        email,
+        password: currentPassword,
+        position_id,
+      }
+
+      const schema = Yup.object().shape({
+        name: Yup.string().required(),
+        email: Yup.string().email().required(),
+        password: Yup.string().required().min(6),
+        position_id: Yup.number().required(),
+      });
+
+      await schema.validate(newData, {
+        abortEarly: false,
+      })
+
+      await administratorsRepository.update(id, newData)
+
+      return response.json({ message: `Administrator ${id} Updated` })
+    } else {
+      const newData = {
+        name,
+        email,
+        password,
+        position_id,
+      }
+
+      const schema = Yup.object().shape({
+        name: Yup.string().required(),
+        email: Yup.string().email().required(),
+        password: Yup.string().required().min(6),
+        position_id: Yup.number().required(),
+      });
+
+      await schema.validate(newData, {
+        abortEarly: false,
+      })
+
+      const hashedPassword = await hash(password, 8)
+
+      const hashedPasswordNewData = {
+        name,
+        email,
+        password: hashedPassword,
+        position_id,
+      }
+
+      await administratorsRepository.update(id, hashedPasswordNewData)
+
+      return response.json({ message: `Administrator ${id} Updated` })
+
+    }
   }
 }

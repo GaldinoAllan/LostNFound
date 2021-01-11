@@ -71,6 +71,7 @@ const Users = () => {
   }, [token])
 
   const save = async () => {
+    console.log(user);
     if (!user.id) {
       await api.post('administrators', user, {
         headers: {
@@ -95,7 +96,8 @@ const Users = () => {
   }
 
   const edit = newUser => {
-    setUser(newUser);
+    const { id, name, email, position_id } = newUser
+    setUser({ id, name, email, password: user.password, position_id });
   }
 
   const remove = removeUser => {
