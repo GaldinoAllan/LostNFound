@@ -36,6 +36,7 @@ export const QuestionTitle = styled.h3`
 `
 
 export const Answer = styled.p`
+  margin-top: 8px;
   font-size: 16px;
   margin-bottom: 56px;
 

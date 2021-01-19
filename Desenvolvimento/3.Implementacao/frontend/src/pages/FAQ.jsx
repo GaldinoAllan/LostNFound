@@ -13,28 +13,28 @@ const FAQ = () => {
       <Title>Dúvidas frequentes:</Title>
       <QuestionsContainer>
         <QuestionTitle>
-          Dúvida X?
+          Como faço para retirar meu item?
         </QuestionTitle>
         <Answer>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesen.
+          Dirija-se a secretaria com a descrição do seu objeto e a data de quando perdeu.
         </Answer>
         <QuestionTitle>
-          Dúvida X?
+          Onde devo levar um item que encontrei?
         </QuestionTitle>
         <Answer>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesen.
+          Até a secretaria do Instituto ou entregue a algum coordenador presente no campus. Aviso: Tenha certeza de descrever onde e como o encontrou.
         </Answer>
         <QuestionTitle>
-          Dúvida X?
+          Meu item não está no site, como faço pra saber se perdi no Instituto?
         </QuestionTitle>
         <Answer>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesen.
+          Os itens são cadastrados assim que apresentados à secretaria. Se o item que você perdeu não está no site, ele pode ter sido levado por alguém e não apresentado para a secretaria. Considere também tê-lo perdido em outro local.
         </Answer>
         <QuestionTitle>
-          Dúvida X?
+          Preciso agendar para retirar meu item?
         </QuestionTitle>
         <Answer>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesen.
+          Não, é só comparecer á secretaria do Campus com a as descrições do objeto e a data em que perdeu.
         </Answer>
       </QuestionsContainer>
       <MoreQuestions>
