@@ -29,7 +29,7 @@ export default function ensureAutenticated(
 
   // tentando decodificar o token para verificar a validade do mesmo
   try {
-    const decoded = verify(token, authConfig.jwt.secret)
+    const decoded = verify(token, authConfig.jwt.publicKey)
 
     const { sub } = decoded as TokenPayload
 

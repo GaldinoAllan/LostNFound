@@ -1,6 +1,22 @@
+import fs from 'fs';
+import path from 'path'
+
+const secret = 'bc17eed0d373bbaa3c6f188e34fc8ebb'
+const privateKey = fs.readFileSync(path.join(__dirname, 'private.key'), 'utf8');
+const publicKey = fs.readFileSync(path.join(__dirname, 'public.key'), 'utf8');
+
 export default {
   jwt: {
-    secret: 'bc17eed0d373bbaa3c6f188e34fc8ebb',
-    expiresIn: '1d'
+    privateKey,
+    publicKey,
+    secret,
+    expiresIn: '1d',
   }
 }
+
+// export default {
+//   jwt: {
+//     secret: 'bc17eed0d373bbaa3c6f188e34fc8ebb',
+//     expiresIn: '1d'
+//   }
+// }

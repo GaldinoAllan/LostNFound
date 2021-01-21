@@ -40,11 +40,12 @@ class AuthenticateUserService {
     // Se passou até aqui, o usuário pode ser autenticado
 
     // Criando token de autenticação
-    const { secret, expiresIn } = authConfig.jwt
+    const { privateKey, expiresIn } = authConfig.jwt
 
-    const token = sign({}, secret, {
+    const token = sign({}, privateKey, {
       subject: String(user.id),
       expiresIn,
+      algorithm: "RS256",
     })
 
     return {
